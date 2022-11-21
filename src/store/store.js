@@ -3,6 +3,6 @@ import selectedBenefitSlice from './selectedBenefitSlice';
 
 export const store = configureStore({
   reducer: {
-    benefits: selectedBenefitSlice,
+    benefit: selectedBenefitSlice,
   },
 });

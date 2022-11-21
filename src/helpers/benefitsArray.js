@@ -3,7 +3,7 @@ export const benefitsArray = [
     title: '10% de descuento',
     url: 'http://d3ugyf2ht6aenh.cloudfront.net/stores/001/050/300/themes/common/ogimage-1363177326-1646402915-a1ab5d4fc53341bf3895a4429d645cc31646402915.png?0',
     shortDescription: 'Descripcion corta del beneficio',
-    longDescription: 'Descripcion larga del beneficio para screen de beneficio',
+    longDescription: 'Cumplimos 100 años y decidimos ferjarlo creando un Centro de Experiancias Virtual donde puedas conocer lo que hacemos, de una forma divertida. Juga en familia y aprendé más sobre nuestra compañía.',
     days: 'Lunes a Viernes',
     index: 1,
   },
