@@ -3,7 +3,7 @@ import { Text, View, TouchableHighlight } from 'react-native';
 import {
   GoogleAuthProvider, getAuth, signInWithRedirect, getRedirectResult,
 } from 'firebase/auth';
-import { styles } from './logInOptionsStyles';
+import { styles } from './logInStyles';
 import app from '../../../firebase';
 
 const GoogleLogIn = () => {

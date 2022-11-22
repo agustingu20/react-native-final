@@ -2,7 +2,7 @@ import { View, TouchableHighlight, Text } from 'react-native';
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { styles } from './logInOptionsStyles';
+import { styles } from './logInStyles';
 import app from '../../../firebase';
 
 const EmailLogin = () => {
