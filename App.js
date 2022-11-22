@@ -1,11 +1,7 @@
-import { View } from 'react-native';
-import { styles } from './appStyles';
-import CarouselCard from './src/components/CarouselCard/CarouselCard';
+import { LogIn } from './src/components/LogIn';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <CarouselCard />
-    </View>
+    <LogIn/>
   );
 }
