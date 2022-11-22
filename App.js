@@ -1,4 +1,4 @@
-import Provider from 'react-redux';
+import { Provider } from 'react-redux';
 import { View } from 'react-native';
 import { store } from './src/store/store';
 import CarouselCard from './src/components/CarouselCard/CarouselCard';
