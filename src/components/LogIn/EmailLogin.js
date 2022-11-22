@@ -11,8 +11,7 @@ const EmailLogin = () => {
   const createAuthWithEmailAndPassword = () => {
     createUserWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
       .then((userCredential) => {
-        // eslint-disable-next-line prefer-destructuring
-        const user = userCredential.user;
+        const { user } = userCredential;
         console.log(user);
       })
       .catch((error) => {
@@ -23,8 +22,7 @@ const EmailLogin = () => {
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
       .then((userCredential) => {
-        // eslint-disable-next-line prefer-destructuring
-        const user = userCredential.user;
+        const { user } = userCredential;
         console.log(user);
       })
       .catch((error) => {
