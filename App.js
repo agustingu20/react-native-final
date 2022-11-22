@@ -5,6 +5,7 @@ import CarouselCard from './src/components/CarouselCard/CarouselCard';
 import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
 import { benefitsArray } from './src/helpers/benefitsArray';
 import { LogIn } from './src/components/LogIn';
+import { RegisterUser } from './src/components/RegisterUser';
 import { styles } from './appStyles';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       </View>
       <View>
         <LogIn />
+        <RegisterUser />
       </View>
     </Provider>
   );
