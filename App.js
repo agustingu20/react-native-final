@@ -1,12 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { styles } from './appStyles';
+import EmailLogin from './src/components/LogIn/EmailLogin';
+import GoogleLogIn from './src/components/LogIn/GoogleLogIn';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <EmailLogin/>
+      <GoogleLogIn/>
     </View>
   );
 }
