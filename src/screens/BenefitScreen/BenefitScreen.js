@@ -27,12 +27,10 @@ const BenefitScreen = () => {
         <Text style={styles.benefitLongDescription}>
           {benefit.value?.longDescription}
         </Text>
-        {benefit.value?.title && (
           <View style={styles.codeContainer}>
-            <Text style={styles.codeTitle}>Tu código es:</Text>
-            <Text style={styles.code}>{randomCodeBenefit}</Text>
+            {benefit.value?.title && <Text style={styles.codeTitle}>Tu código es:</Text>}
+           {benefit.value?.title && <Text style={styles.code}>{randomCodeBenefit}</Text>}
           </View>
-        )}
       </View>
     </View>
   );

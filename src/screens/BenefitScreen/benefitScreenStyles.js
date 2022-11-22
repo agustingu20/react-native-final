@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
   },
   benefitLongDescription: {
     fontSize: 16,
-    fontWeight: 600,
   },
   codeContainer: {
     marginTop: 10,

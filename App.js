@@ -10,8 +10,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <CarouselCard />
-        <BenefitScreen {...benefitsArray} />
+          <CarouselCard />
+          <BenefitScreen {...benefitsArray} />
       </View>
     </Provider>
   );
