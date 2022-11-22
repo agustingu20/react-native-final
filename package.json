@@ -10,13 +10,17 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@reduxjs/toolkit": "^1.9.0",
     "eslint-config-airbnb": "^19.0.4",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^9.14.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-google-button": "^0.7.2",
     "react-native": "0.70.5",
-    "react-native-web": "~0.18.9"
+    "react-native-web": "~0.18.9",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

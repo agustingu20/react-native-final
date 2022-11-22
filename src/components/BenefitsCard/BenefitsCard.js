@@ -1,20 +1,43 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import {
+  Image, Text, View, TouchableHighlight,
+} from 'react-native';
 import { styles } from './benefitsCardStyles';
+import { setSelectedBenefit } from '../../store/selectedBenefitSlice';
 
 const BenefitsCard = ({
-  title, url, shortDescription, days,
+  title,
+  url,
+  shortDescription,
+  days,
+  longDescription,
 }) => {
+  const dispatch = useDispatch();
+  const onPressSelectedBenefit = () => {
+    dispatch(
+      setSelectedBenefit({
+        title,
+        url,
+        shortDescription,
+        days,
+        longDescription,
+      }),
+    );
+  };
+
   return (
-    <View style={styles.containerCard}>
-      <Text style={styles.titleCard}>{title}</Text>
-      <Image
-        source={{ uri: `${url}` }}
-        style={styles.cardImage}
-      />
-      <Text>{shortDescription}</Text>
-      <Text>{days}</Text>
-    </View>
+    <TouchableHighlight
+      onPress={onPressSelectedBenefit}
+      style={styles.containerCard}
+    >
+      <View>
+        <Text style={styles.titleCard}>{title}</Text>
+        <Image source={{ uri: `${url}` }} style={styles.cardImage} />
+        <Text>{shortDescription}</Text>
+        <Text>{days}</Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
