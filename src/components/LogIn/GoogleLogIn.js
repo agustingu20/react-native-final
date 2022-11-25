@@ -24,11 +24,10 @@ const GoogleLogIn = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result;
-        console.log(token, user);
         dispatch(setUser(user));
         dispatch(setToken(token));
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
   useEffect(() => {

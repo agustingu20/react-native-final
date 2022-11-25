@@ -2,20 +2,25 @@ import { View, TouchableHighlight, Text } from 'react-native';
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
 import { styles } from './logInStyles';
 import app from '../../../firebase';
+import { setUser } from '../../store/userSlice';
+import { setToken } from '../../store/tokenSlice';
 
 const EmailLogin = () => {
+  const dispatch = useDispatch();
   const auth = getAuth(app);
 
   const createAuthWithEmailAndPassword = () => {
-    createUserWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
+    createUserWithEmailAndPassword(auth, 'usuario123455@gmail.com', '123458s')
       .then((userCredential) => {
         const { user } = userCredential;
-        console.log(user);
+        dispatch(setUser(user));
+        dispatch(setToken(user.accessToken));
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -23,10 +28,12 @@ const EmailLogin = () => {
     signInWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
       .then((userCredential) => {
         const { user } = userCredential;
+        dispatch(setUser(user));
+        dispatch(setToken(user.accessToken));
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
