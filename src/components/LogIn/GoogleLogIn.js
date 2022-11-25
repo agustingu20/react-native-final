@@ -3,10 +3,14 @@ import { Text, View, TouchableHighlight } from 'react-native';
 import {
   GoogleAuthProvider, getAuth, signInWithRedirect, getRedirectResult,
 } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
 import { styles } from './logInStyles';
 import app from '../../../firebase';
+import { setToken } from '../../store/tokenSlice';
+import { setUser } from '../../store/userSlice';
 
 const GoogleLogIn = () => {
+  const dispatch = useDispatch();
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
 
@@ -21,6 +25,8 @@ const GoogleLogIn = () => {
         const token = credential?.accessToken;
         const user = result;
         console.log(token, user);
+        dispatch(setUser(user));
+        dispatch(setToken(token));
       }).catch((error) => {
         console.log(error);
       });
