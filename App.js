@@ -7,6 +7,7 @@ import { benefitsArray } from './src/helpers/benefitsArray';
 import { LogIn } from './src/components/LogIn';
 import { RegisterUser } from './src/components/RegisterUser';
 import { styles } from './appStyles';
+import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 
 export default function App() {
   return (
@@ -18,6 +19,9 @@ export default function App() {
       <View>
         <LogIn />
         <RegisterUser />
+      </View>
+      <View style={styles.container}>
+        <UserProfileScreen />
       </View>
     </Provider>
   );
