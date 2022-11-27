@@ -8,11 +8,15 @@ import { LogIn } from './src/components/LogIn';
 // import { RegisterUser } from './src/components/RegisterUser';
 import { styles } from './appStyles';
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
+import OutstandingBenefit from './src/components/OustandingBenefit/OutstandingBenefit';
 
 export default function App() {
   return (
     <Provider store={store}>
       <ScrollView>
+        <View>
+          <OutstandingBenefit />
+        </View>
         <View style={styles.container}>
           <CarouselCard />
           <BenefitScreen {...benefitsArray} />
