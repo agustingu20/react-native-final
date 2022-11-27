@@ -5,15 +5,15 @@ import { styles } from './userScreenStyles';
 
 const UserProfileScreen = () => {
   const { user } = useSelector((state) => state);
-  console.log(user?.value?.user);
   return (
     <View style={styles.container}>
-      <Image
-      source={`${user?.value?.user.photoURL}`}
-      style={styles.profileImage}
-      />
-      <Text>{user?.value?.user.displayName}</Text>
-      <Text>{user?.value?.user.email}</Text>
+      <Image source={`${user?.value?.photoURL}`} style={styles.profileImage} />
+      {user.value && <Text style={styles.profileTitle}>Nombre</Text>}
+      <Text style={styles.profileText}>{user?.value?.displayName}</Text>
+      {user.value && <Text style={styles.profileTitle}>Email</Text>}
+      <Text style={styles.profileText}>{user?.value?.email}</Text>
+      {user.value && <Text style={styles.profileTitle}>Tipo de usuario</Text>}
+      {user.value && <Text style={styles.profileText}>Staff</Text>}
     </View>
   );
 };

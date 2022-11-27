@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 import {
-  GoogleAuthProvider, getAuth, signInWithRedirect, getRedirectResult,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithRedirect,
+  getRedirectResult,
 } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { styles } from './logInStyles';
@@ -23,10 +26,16 @@ const GoogleLogIn = () => {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        const user = result;
-        dispatch(setUser(user));
+        const { user } = result;
+        dispatch(setUser({
+          displayName: user.displayName,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
+        }));
         dispatch(setToken(token));
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error(error);
       });
   };
@@ -36,10 +45,10 @@ const GoogleLogIn = () => {
 
   return (
     <TouchableHighlight onPress={googleAuth}>
-        <View style={styles.button}>
-          <Text>Iniciar con Google</Text>
-        </View>
-      </TouchableHighlight>
+      <View style={styles.button}>
+        <Text>Iniciar con Google</Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
