@@ -1,14 +1,27 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import CarouselCard from '../../components/CarouselCard/CarouselCard';
-import OutstandingBenefit from '../../components/OustandingBenefit/OutstandingBenefit';
+import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingBenefit';
 import { styles } from './homeScreenStyles';
+import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 
-const HomeScreen = () => {
+const HomeScreen = ({ isStaff }) => {
   return (
     <View style={styles.container}>
-        <OutstandingBenefit />
-        <CarouselCard />
+      <View style={isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
+        <Image
+          source={{
+            uri: 'https://campus.rollingcodeschool.com/pluginfile.php/1/core_admin/logo/0x150/1633815474/logo2.png',
+          }}
+          style={styles.homeImage}
+          resizeMode={'contain'}
+        />
+      </View>
+      <OutstandingBenefit {...outstandingBenefit} />
+      <View style={styles.homeTitleContainer}>
+        <Text style={styles.homeTitle}>Tus beneficios: </Text>
+      </View>
+      <CarouselCard />
     </View>
   );
 };
