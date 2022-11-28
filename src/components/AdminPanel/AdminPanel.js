@@ -35,8 +35,8 @@ const AdminPanel = () => {
             <button className='btn btn-secondary btn-lg mx-3 w-25'>Benefits</button>
             <button className='btn btn-outline-secondary btn-lg mx-3 w-25' disabled>Users</button>
         </div>
-        <table className="table table-hover text-center">
-        <thead>
+        <table className="table table-hover">
+        <thead className="text-center">
             <tr>
             <th scope="col">Benefit</th>
             <th scope="col">Type</th>
