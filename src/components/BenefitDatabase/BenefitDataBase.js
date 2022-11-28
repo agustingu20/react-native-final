@@ -18,7 +18,7 @@ const BenefitDataBase = () => {
       const data = await addDoc(collection(db, 'benefits'), infoBenefit);
       console.log(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (
