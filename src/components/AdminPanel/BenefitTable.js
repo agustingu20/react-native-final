@@ -10,6 +10,7 @@ const BenefitTable = ({ benefit }) => {
                 <td className='text-left'>{benefit.longDescription}</td>
                 <td><img src={benefit.image} className='w-25' alt='benefit-image' /></td>
                 <td><button className='btn btn-primary' disabled>Edit</button></td>
+                <td><button className='btn btn-danger' disabled>Delete</button></td>
             </tr>
 
   )

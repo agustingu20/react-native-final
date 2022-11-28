@@ -17,10 +17,8 @@ const AdminPanel = () => {
         })
 
         setBenefitData(benefitMap);
-        console.log(benefitMap)
     };
 
-    console.log(benefitData);
 
   useEffect(() => {
     getBenefits();
