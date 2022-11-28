@@ -20,6 +20,7 @@ const BenefitScreen = () => {
       <Image
         source={{ uri: `${benefit.value?.url}` }}
         style={styles.benefitImage}
+        resizeMode={'contain'}
       />
       <View style={styles.textContainer}>
         <Text style={styles.benefitTitle}>{benefit.value?.title}</Text>
