@@ -3,9 +3,13 @@ import { Dimensions, StyleSheet } from 'react-native';
 const { width, height } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F2ECE4',
+  },
   benefitImage: {
     width,
     height: height / 2.5,
+    backgroundColor: 'white',
   },
   textContainer: {
     padding: 20,

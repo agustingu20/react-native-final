@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 import {
-  GoogleAuthProvider, getAuth, signInWithRedirect, getRedirectResult,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithRedirect,
+  getRedirectResult,
 } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
 import { styles } from './logInStyles';
 import app from '../../../firebase';
+import { setToken } from '../../store/tokenSlice';
+import { setUser } from '../../store/userSlice';
 
 const GoogleLogIn = () => {
+  const dispatch = useDispatch();
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
 
@@ -19,10 +26,17 @@ const GoogleLogIn = () => {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        const user = result;
-        console.log(token, user);
-      }).catch((error) => {
-        console.log(error);
+        const { user } = result;
+        dispatch(setUser({
+          displayName: user.displayName,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
+        }));
+        dispatch(setToken(token));
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
   useEffect(() => {
@@ -31,10 +45,10 @@ const GoogleLogIn = () => {
 
   return (
     <TouchableHighlight onPress={googleAuth}>
-        <View style={styles.button}>
-          <Text>Iniciar con Google</Text>
-        </View>
-      </TouchableHighlight>
+      <View style={styles.button}>
+        <Text>Iniciar con Google</Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 

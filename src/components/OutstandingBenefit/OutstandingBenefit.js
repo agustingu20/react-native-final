@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import {
   Image, Text, View, TouchableHighlight,
 } from 'react-native';
-import { styles } from './benefitsCardStyles';
+import { styles } from './outstandingBenefitStyles';
 import { setSelectedBenefit } from '../../store/selectedBenefitSlice';
 
-const BenefitsCard = ({
+const OutstandingBenefit = ({
   title,
   url,
   shortDescription,
@@ -32,13 +32,12 @@ const BenefitsCard = ({
       style={styles.containerCard}
     >
       <View>
-        <Text style={styles.titleCard}>{title}</Text>
         <Image source={{ uri: `${url}` }} style={styles.cardImage} />
-        <Text style={styles.textCard}>{shortDescription}</Text>
-        <Text style={styles.textCard}>{days}</Text>
+        <Text style={styles.benefitText}>{shortDescription}</Text>
+        <Text style={styles.benefitText}>{days}</Text>
       </View>
     </TouchableHighlight>
   );
 };
 
-export default BenefitsCard;
+export default OutstandingBenefit;

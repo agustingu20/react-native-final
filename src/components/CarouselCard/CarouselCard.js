@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Animated } from 'react-native';
-import { benefitsArray } from '../../helpers/benefitsArray';
+import {
+  benefitsArrayStaff,
+  benefitsArrayUser,
+} from '../../helpers/benefitsArray';
 import BenefitsCard from '../BenefitsCard/BenefitsCard';
 import { styles } from './carouselCardStyles';
 
-const CarouselCard = () => {
+const CarouselCard = ({ isStaff }) => {
   return (
     <View style={styles.container}>
       <Animated.FlatList
-        data={benefitsArray}
+        data={isStaff ? benefitsArrayStaff : benefitsArrayUser}
         keyExtractor={(item) => item.index}
         horizontal
         showsHorizontalScrollIndicator={false}

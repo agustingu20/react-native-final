@@ -16,10 +16,11 @@ const BenefitScreen = () => {
   }, [benefit]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image
         source={{ uri: `${benefit.value?.url}` }}
         style={styles.benefitImage}
+        resizeMode={'contain'}
       />
       <View style={styles.textContainer}>
         <Text style={styles.benefitTitle}>{benefit.value?.title}</Text>
