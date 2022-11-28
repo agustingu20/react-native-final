@@ -6,6 +6,7 @@ import { benefitsArray } from './src/helpers/benefitsArray';
 import { LogIn } from './src/components/LogIn';
 // import { RegisterUser } from './src/components/RegisterUser';
 import { styles } from './appStyles';
+import { BenefitDataBase } from './src/components/BenefitDatabase';
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import { useState } from 'react';
@@ -28,6 +29,9 @@ export default function App() {
         </View>
         <View>
           <UserProfileScreen />
+        </View>
+        <View>
+          <BenefitDataBase />
         </View>
       </ScrollView>
     </Provider>
