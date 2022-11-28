@@ -1,15 +1,14 @@
 import React from 'react'
 
-const BenefitTable = (benefit) => {
+const BenefitTable = ({ benefit }) => {
   return (
-
             <tr>
-                <td><b>Benefit Name</b></td>
-                <td>Type</td>
-                <td>Days</td>
-                <td>Short Description</td>
-                <td>Long Description</td>
-                <td><img src='https://static01.eu/catalogosyofertas.com.ar/images/store/216.png' className='w-25' alt='benefit-image' /></td>
+                <td><b>{benefit.name}</b></td>
+                <td>{benefit.type}</td>
+                <td>{benefit.days}</td>
+                <td>{benefit.shortDescription}</td>
+                <td className='text-left'>{benefit.longDescription}</td>
+                <td><img src={benefit.image} className='w-25' alt='benefit-image' /></td>
                 <td><button className='btn btn-primary'>Edit</button></td>
             </tr>
 

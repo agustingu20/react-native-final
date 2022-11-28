@@ -15,9 +15,11 @@ const AdminPanel = () => {
                 ...benefit.data()
             }
         })
+
         setBenefitData(benefitMap);
+        console.log(benefitMap)
     };
-    
+
     console.log(benefitData);
 
   useEffect(() => {
