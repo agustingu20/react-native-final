@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { collection, getDocs } from "firebase/firestore";
+import { db } from '../../../firebase';
 
-const AdminPanel =  async () =>  {
-
+const AdminPanel = () => {
+  const prueba = async () => {
     const querySnapshot = await getDocs(collection(db, 'benefits'));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      console.log(doc.data());
     });
+  };
 
-  return (
-    <div>AdminPanel</div>
-  )
-}
+  useEffect(() => {
+    prueba();
+  }, []);
+
+  return <div>AdminPanel</div>;
+};
 
 export default AdminPanel
