@@ -18,9 +18,11 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   titleCard: {
-    backgroundColor: '#F2D3AC',
+    backgroundColor: '#F2C230',
     borderRadius: 4,
-    width: 130,
+    width: 150,
+    fontSize: 15,
+    fontWeight: 600,
     color: '#172026',
     textAlign: 'center',
     marginBottom: 10,
@@ -29,7 +31,12 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 120,
     borderRadius: 4,
-    backgroundColor: '#F2D3AC',
+    backgroundColor: '#F2ECE4',
+    marginBottom: 10,
+  },
+  textCard: {
+    fontSize: 16,
+    fontWeight: 500,
     marginBottom: 10,
   },
 });

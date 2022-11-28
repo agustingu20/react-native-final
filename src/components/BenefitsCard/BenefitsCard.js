@@ -34,8 +34,8 @@ const BenefitsCard = ({
       <View>
         <Text style={styles.titleCard}>{title}</Text>
         <Image source={{ uri: `${url}` }} style={styles.cardImage} />
-        <Text>{shortDescription}</Text>
-        <Text>{days}</Text>
+        <Text style={styles.textCard}>{shortDescription}</Text>
+        <Text style={styles.textCard}>{days}</Text>
       </View>
     </TouchableHighlight>
   );

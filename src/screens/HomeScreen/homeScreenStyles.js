@@ -4,24 +4,25 @@ const { width, height } = Dimensions.get('screen');
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: '#F2ECE4',
   },
   homeStaffHeader: {
-    backgroundColor: 'red',
+    backgroundColor: '#A65D56',
   },
   homeUserHeader: {
-    backgroundColor: '#67A9EB',
+    backgroundColor: '#1C66A6',
   },
   homeImage: {
     width,
     height: height / 4,
   },
   homeTitleContainer: {
-    marginStart: -200,
+    marginStart: -150,
   },
   homeTitle: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 600,
-    marginTop: 20,
+    marginTop: 40,
     marginBottom: 10,
   }
 });

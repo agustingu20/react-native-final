@@ -21,7 +21,7 @@ const HomeScreen = ({ isStaff }) => {
       <View style={styles.homeTitleContainer}>
         <Text style={styles.homeTitle}>Tus beneficios: </Text>
       </View>
-      <CarouselCard />
+      <CarouselCard isStaff={isStaff}/>
     </View>
   );
 };
