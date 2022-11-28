@@ -5,7 +5,9 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
-    marginTop: 20,
+    paddingTop: 30,
+    paddingBottom: 30,
+    backgroundColor: '#F2ECE4',
   },
   profileImage: {
     width: 100,
