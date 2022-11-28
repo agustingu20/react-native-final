@@ -16,7 +16,7 @@ const BenefitScreen = () => {
   }, [benefit]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image
         source={{ uri: `${benefit.value?.url}` }}
         style={styles.benefitImage}
