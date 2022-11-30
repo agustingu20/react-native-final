@@ -1,6 +1,6 @@
-import { Provider } from 'react-redux';
-import { ScrollView, View } from 'react-native';
-import { store } from './src/store/store';
+// import { Provider } from 'react-redux';
+// import { ScrollView, View } from 'react-native';
+// import { store } from './src/store/store';
 // import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
 // import { benefitsArray } from './src/helpers/benefitsArray';
 // import { LogIn } from './src/components/LogIn';
@@ -8,9 +8,11 @@ import { store } from './src/store/store';
 // import { styles } from './appStyles';
 // import { BenefitDataBase } from './src/components/BenefitDatabase';
 // import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
-import { HomeScreen } from './src/screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { BenefitScreen } from './src/screens/BenefitScreen';
+import { UserProfile } from './src/screens/UserProfileScreen';
 // import { useState } from 'react';
 
 export default function App() {
@@ -21,7 +23,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {/* <Provider store={store}> */}
-          <Stack.Screen name="Home" component={HomeScreen} store={store}/>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Benefits" component={BenefitScreen} />
+          <Stack.Screen name="Profile" component={UserProfile} />
         {/* </Provider> */}
       </Stack.Navigator>
       </NavigationContainer>

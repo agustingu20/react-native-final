@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View, Button } from 'react-native';
 import CarouselCard from '../../components/CarouselCard/CarouselCard';
 import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingBenefit';
 import { styles } from './homeScreenStyles';
@@ -7,8 +7,16 @@ import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 import { store } from '../../store/store'
 import { Provider } from 'react-redux';
 
+const HomeScreen = ({ isStaff, navigation }) => {
 
-const HomeScreen = ({ isStaff }) => {
+  const handleBenefitNavigate = () => {
+    navigation.navigate('Benefits')
+  }
+
+  const handleProfileNavigate = () => {
+    navigation.navigate('Profile')
+  }
+
   return (
     <Provider store={store}>
     <View style={styles.container}>
@@ -21,11 +29,28 @@ const HomeScreen = ({ isStaff }) => {
           resizeMode={'contain'}
         />
       </View>
+
       <OutstandingBenefit {...outstandingBenefit} />
+
       <View style={styles.homeTitleContainer}>
         <Text style={styles.homeTitle}>Tus beneficios: </Text>
+        <Button
+        onPress={handleBenefitNavigate}
+        title="Tus beneficios:"
+        color="#841584"
+        />
       </View>
+      
       <CarouselCard isStaff={isStaff}/>
+
+      <View>
+        <Button
+        onPress={handleProfileNavigate}
+        title="Profile"
+        color="#841584"
+        />
+      </View>
+
     </View>
     </Provider>
   );
