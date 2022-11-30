@@ -4,9 +4,13 @@ import CarouselCard from '../../components/CarouselCard/CarouselCard';
 import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingBenefit';
 import { styles } from './homeScreenStyles';
 import { outstandingBenefit } from '../../helpers/outstandingBenefit';
+import { store } from '../../store/store'
+import { Provider } from 'react-redux';
+
 
 const HomeScreen = ({ isStaff }) => {
   return (
+    <Provider store={store}>
     <View style={styles.container}>
       <View style={isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
         <Image
@@ -23,6 +27,7 @@ const HomeScreen = ({ isStaff }) => {
       </View>
       <CarouselCard isStaff={isStaff}/>
     </View>
+    </Provider>
   );
 };
 
