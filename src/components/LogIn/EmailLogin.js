@@ -1,24 +1,13 @@
 import { View, TouchableHighlight, Text } from 'react-native';
 import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  getAuth, signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { styles } from './logInStyles';
 import app from '../../../firebase';
 
 const EmailLogin = () => {
   const auth = getAuth(app);
-
-  const createAuthWithEmailAndPassword = () => {
-    createUserWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
       .then((userCredential) => {
@@ -32,7 +21,7 @@ const EmailLogin = () => {
 
   return (
     <>
-    <TouchableHighlight onPress={createAuthWithEmailAndPassword}>
+    <TouchableHighlight >
         <View style={styles.button}>
         <Text>Crear nuevo usuario</Text>
         </View>
