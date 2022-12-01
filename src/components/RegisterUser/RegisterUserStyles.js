@@ -41,4 +41,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     padding: '1rem',
   },
+  errorMsg: {
+    color: 'red'
+  },
 });
