@@ -26,7 +26,7 @@ export default function App() {
         <View>
           <LogIn />
           {/* <RegisterUser /> */}
-        </View>
+        </View> 
         <View>
           <UserProfileScreen />
         </View>
