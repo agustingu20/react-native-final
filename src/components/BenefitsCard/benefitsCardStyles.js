@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   titleCard: {
-    backgroundColor: '#F2C230',
+    backgroundColor: '#F4F6F7',
     borderRadius: 4,
     width: 150,
     fontSize: 15,

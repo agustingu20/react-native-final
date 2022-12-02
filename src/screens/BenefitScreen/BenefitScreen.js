@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Image, Text, View } from 'react-native';
-import { styles } from './benefitScreenStyles';
+// import { useSelector } from 'react-redux';
+import { Image, Text, View, ScrollView } from 'react-native';
+// import { styles } from './benefitScreenStyles';
+import { collection, getDocs } from 'firebase/firestore';
+import BenefitsCard from '../../components/BenefitsCard/BenefitsCard';
+import { db } from '../../../firebase'
 
 const BenefitScreen = () => {
   // const { benefit } = useSelector((state) => state);
@@ -15,11 +18,29 @@ const BenefitScreen = () => {
   //   setRandomCodeBenefit(generateRandomString(13).slice(2, 13).toLocaleUpperCase());
   // }, [benefit]);
 
+  const [benefitData, setBenefitData] = useState([]);
+
+  const getBenefits = async () => {
+    const { docs } = await getDocs(collection(db, 'benefits'));
+
+    const benefitMap = docs.map((benefit) => {
+      return {...benefit.data(), id: benefit.id};
+    });
+    setBenefitData(benefitMap);
+  };
+
+  useEffect(() => {
+    getBenefits();
+  }, []);
+
+  console.log(benefitData)
   return (
     // <View style={styles.container}>
-    <View>
-      <Text>Benefits Screen: map de array de beneficios en cards</Text>
-    </View>
+    <ScrollView>
+      {benefitData?.map((benefit) => (
+            <BenefitsCard benefit={benefit} key={benefit.id} />
+          ))}
+    </ScrollView>
     //   <Image
     //     source={{ uri: `${benefit.value?.url}` }}
     //     style={styles.benefitImage}

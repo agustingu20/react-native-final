@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
     width,
     height: height / 4,
   },
-  // homeTitleContainer: {
-  //   marginStart: -25,
-  // },
   homeTitle: {
     color: '#C83C45',
     fontSize: 20,
     fontWeight: 900,
     marginTop: -100,
     marginBottom: 10,
+  },
+  benefitButton: {
+    marginVertical: 30,
   }
 });

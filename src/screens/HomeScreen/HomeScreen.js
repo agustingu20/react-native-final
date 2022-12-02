@@ -1,11 +1,14 @@
 import React from 'react';
-import { Image, ScrollView, Text, View, Button } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
+import { Button } from 'react-native-paper';
+
 import CarouselCard from '../../components/CarouselCard/CarouselCard';
 import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingBenefit';
 import { styles } from './homeScreenStyles';
 import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 import { store } from '../../store/store'
 import { Provider } from 'react-redux';
+import { WelcomeCarrousel } from '../../components/WelcomeCarrousel';
 
 const HomeScreen = ({ isStaff, navigation }) => {
 
@@ -32,6 +35,7 @@ const HomeScreen = ({ isStaff, navigation }) => {
             />
           </View>
 
+          {/* <WelcomeCarrousel /> */}
           <CarouselCard isStaff={isStaff}/>
 
           <View style={styles.homeTitleContainer}>
@@ -40,14 +44,12 @@ const HomeScreen = ({ isStaff, navigation }) => {
           
           <OutstandingBenefit {...outstandingBenefit} />
 
-          <View>
-            <Button
-            onPress={handleBenefitNavigate}
-            title="Conocé tus beneficios:"
-            color="#C83C45"
-            /> 
-          </View>
+        <View style={styles.benefitButton}>
+          <Button icon='gift' mode='contained' onPress={handleBenefitNavigate} buttonColor='#C83C45'>
+          Conocé todos tus beneficios
+          </Button>
 
+        </View>
 
         </View>
 

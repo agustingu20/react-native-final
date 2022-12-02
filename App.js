@@ -25,34 +25,37 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-      <Tab.Screen name="Home"
-      component={HomeScreen}
-      options={{
-        tabBarShowLabel: false,
-        tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="home" color={color} size={size} />
-        ),
-      }} />
-      <Tab.Screen name="Benefits"
-      component={BenefitScreen}
-      options={{
-        tabBarShowLabel: false,
-        tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="gift" color={color} size={size} />
-        ),
-       }} />
-      <Tab.Screen name="Profile"
-      component={UserProfile}
-      options={{
-        tabBarShowLabel: false,
-        tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="account" color={color} size={size} />
-        ),
-       }} />
 
-    </Tab.Navigator>
+        <Tab.Screen name='Home'
+        component={HomeScreen}
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name='home' color={color} size={size} />
+          ),
+        }} />
 
-      </NavigationContainer>
+        <Tab.Screen name='Benefits'
+        component={BenefitScreen}
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name='gift' color={color} size={size} />
+          ),
+        }} />
+
+        <Tab.Screen name='Profile'
+        component={UserProfile}
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name='account' color={color} size={size} />
+          ),
+        }} />
+
+      </Tab.Navigator>
+
+    </NavigationContainer>
   );
 }
 

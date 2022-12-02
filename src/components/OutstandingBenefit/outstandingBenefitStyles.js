@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     height: 120,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    backgroundColor: '#F2D3AC',
+    backgroundColor: '#F4F6F7',
     marginBottom: 10,
   },
 });
