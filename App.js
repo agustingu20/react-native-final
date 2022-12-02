@@ -10,33 +10,58 @@
 // import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { BenefitScreen } from './src/screens/BenefitScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
-// import { useState } from 'react';
+import { IconComponentProvider, Icon } from "@react-native-material/core";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function App() {
   // const [isStaff, setIsStaff] = useState(true);
-  const Stack = createNativeStackNavigator()
+  // const Stack = createNativeStackNavigator()
+  const Tab = createBottomTabNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {/* <Provider store={store}> */}
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Benefits" component={BenefitScreen} />
-          <Stack.Screen name="Profile" component={UserProfile} />
-        {/* </Provider> */}
-      </Stack.Navigator>
+      <Tab.Navigator>
+      <Tab.Screen name="Home"
+      component={HomeScreen}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="home" color={color} size={size} />
+        ),
+      }} />
+      <Tab.Screen name="Benefits"
+      component={BenefitScreen}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="gift" color={color} size={size} />
+        ),
+       }} />
+      <Tab.Screen name="Profile"
+      component={UserProfile}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="account" color={color} size={size} />
+        ),
+       }} />
+
+    </Tab.Navigator>
+
       </NavigationContainer>
   );
 }
+
 
 {/* <ScrollView>
   <View>
     <HomeScreen isStaff={isStaff} />
 </View>
-</ScrollView> */}
+</ScrollView> 
 {/* <View style={styles.container}>
   <BenefitScreen {...benefitsArray} />
 </View> */}

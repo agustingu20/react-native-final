@@ -19,39 +19,39 @@ const HomeScreen = ({ isStaff, navigation }) => {
 
   return (
     <Provider store={store}>
-    <View style={styles.container}>
-      <View style={isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
-        <Image
-          source={{
-            uri: 'https://campus.rollingcodeschool.com/pluginfile.php/1/core_admin/logo/0x150/1633815474/logo2.png',
-          }}
-          style={styles.homeImage}
-          resizeMode={'contain'}
-        />
-      </View>
+      <ScrollView>
 
-      <OutstandingBenefit {...outstandingBenefit} />
+        <View style={styles.container}>
+          <View style={isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
+            <Image
+              source={{
+                uri: 'https://media.discordapp.net/attachments/1040409257620799541/1048049382953603132/Logo.png',
+              }}
+              style={styles.homeImage}
+              resizeMode={'contain'}
+            />
+          </View>
 
-      <View style={styles.homeTitleContainer}>
-        <Text style={styles.homeTitle}>Tus beneficios: </Text>
-        <Button
-        onPress={handleBenefitNavigate}
-        title="Tus beneficios:"
-        color="#841584"
-        />
-      </View>
-      
-      <CarouselCard isStaff={isStaff}/>
+          <CarouselCard isStaff={isStaff}/>
 
-      <View>
-        <Button
-        onPress={handleProfileNavigate}
-        title="Profile"
-        color="#841584"
-        />
-      </View>
+          <View style={styles.homeTitleContainer}>
+            <Text style={styles.homeTitle}>BENEFICIO DESTACADO DEL MES: </Text>
+          </View>
+          
+          <OutstandingBenefit {...outstandingBenefit} />
 
-    </View>
+          <View>
+            <Button
+            onPress={handleBenefitNavigate}
+            title="Conocé tus beneficios:"
+            color="#C83C45"
+            /> 
+          </View>
+
+
+        </View>
+
+      </ScrollView>
     </Provider>
   );
 };
