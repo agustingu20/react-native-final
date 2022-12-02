@@ -1,16 +1,15 @@
 import React from 'react';
 // import { useDispatch } from 'react-redux';
-import {
-  Image, Text, View, TouchableHighlight, Button
-} from 'react-native';
-import { Card, Title, Paragraph } from 'react-native-paper';
+// import {
+//   Image, Text, View, TouchableHighlight, Button
+// } from 'react-native';
+import { Card, Title, Paragraph, Button } from 'react-native-paper';
 import { styles } from './benefitsCardStyles';
 
 // import { styles } from './benefitsCardStyles';
 // import { setSelectedBenefit } from '../../store/selectedBenefitSlice';
 
 const BenefitsCard = ({ benefit }) => {
-  console.log(benefit)
   // , title,
   // url,
   // shortDescription,
@@ -32,8 +31,11 @@ const BenefitsCard = ({ benefit }) => {
     <Card style={styles.containerCard}>
     <Card.Cover source={benefit.url} style={styles.cardImage}/>
     <Card.Content>
-      <Title>{benefit.title}</Title>
-      <Paragraph>{benefit.shotDescription}</Paragraph>
+      <Title style={styles.titleCard}>{benefit.title}</Title>
+      <Paragraph style={styles.textCard}>Válido: {benefit.days}</Paragraph>
+      <Button mode='contained' buttonColor='#C83C45'>
+        Lo quiero!
+      </Button>
     </Card.Content>
   </Card>
 );

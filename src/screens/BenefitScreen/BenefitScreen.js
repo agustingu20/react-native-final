@@ -33,7 +33,6 @@ const BenefitScreen = () => {
     getBenefits();
   }, []);
 
-  console.log(benefitData)
   return (
     // <View style={styles.container}>
     <ScrollView>
