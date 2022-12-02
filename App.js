@@ -1,15 +1,14 @@
 import { Provider } from 'react-redux';
 import { ScrollView, View } from 'react-native';
+import { useState } from 'react';
 import { store } from './src/store/store';
 import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
-import { benefitsArray } from './src/helpers/benefitsArray';
 import { LogIn } from './src/components/LogIn';
 import { RegisterUser } from './src/components/RegisterUser';
 import { styles } from './appStyles';
 import { BenefitDataBase } from './src/components/BenefitDatabase';
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 import HomeScreen from './src/screens/HomeScreen/HomeScreen';
-import { useState } from 'react';
 
 export default function App() {
   const [isStaff, setIsStaff] = useState(true);
@@ -21,12 +20,12 @@ export default function App() {
           <HomeScreen isStaff={isStaff}/>
         </View>
         <View style={styles.container}>
-          <BenefitScreen {...benefitsArray} />
+          <BenefitScreen />
         </View>
         <View>
           <LogIn />
           {/* <RegisterUser /> */}
-        </View> 
+        </View>
         <View>
           <RegisterUser />
         </View>
