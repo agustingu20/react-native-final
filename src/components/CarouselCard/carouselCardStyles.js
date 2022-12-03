@@ -4,8 +4,9 @@ const { width, height } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: height / 2,
+    width,
+    height: height / 3,
+    marginBottom: height / 6,
   },
   cards: {
     marginTop: 20,
