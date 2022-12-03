@@ -18,7 +18,7 @@ const BenefitScreen = () => {
   //   setRandomCodeBenefit(generateRandomString(13).slice(2, 13).toLocaleUpperCase());
   // }, [benefit]);
 
-  const [isStaff, setIsStaff] = useState(true);
+  const [isStaff, setIsStaff] = useState('true');
 
   const [benefitData, setBenefitData] = useState([]);
 
@@ -38,9 +38,15 @@ const BenefitScreen = () => {
   return (
     // <View style={styles.container}>
     <ScrollView>
-      {benefitData?.map((benefit) => (
-            <BenefitsCard benefit={benefit} key={benefit.id} />
-))}
+      {benefitData
+        ?.filter(
+          isStaff === 'true'
+            ? (benefit) => benefit.isStaff === 'true'
+            : (benefit) => benefit.isStaff === 'false',
+        )
+        .map((benefit) => (
+          <BenefitsCard benefit={benefit} key={benefit.id} />
+        ))}
     </ScrollView>
     //   <Image
     //     source={{ uri: `${benefit.value?.url}` }}

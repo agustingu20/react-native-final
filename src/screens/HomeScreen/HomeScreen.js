@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image, ScrollView, Text, View,
 } from 'react-native';
@@ -8,19 +8,23 @@ import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingB
 import { styles } from './homeScreenStyles';
 import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 
-const HomeScreen = ({ isStaff, navigation }) => {
+const HomeScreen = ({ navigation }) => {
   const handleBenefitNavigate = () => {
     navigation.navigate('Benefits');
   };
+
+  const [isStaff, setIsStaff] = useState('true');
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
           <Image
-            source={{
+            source={isStaff === 'true' ? {
+              uri: 'https://cdn.discordapp.com/attachments/1040409257620799541/1048391510799949844/LogoStaff.png',
+            } : {
               uri: 'https://media.discordapp.net/attachments/1040409257620799541/1048049382953603132/Logo.png',
-            }}
+            } }
             style={styles.homeImage}
             resizeMode={'contain'}
           />
