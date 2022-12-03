@@ -28,9 +28,10 @@ export default function App() {
             name="Home"
             component={HomeScreen}
             options={{
-              tabBarShowLabel: false,
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="home" color={color} size={size} />
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="home" color={color} size={30} />
               ),
             }}
           />
@@ -38,7 +39,8 @@ export default function App() {
             name="Benefits"
             component={BenefitScreen}
             options={{
-              tabBarShowLabel: false,
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons name="gift" color={color} size={size} />
               ),
@@ -48,12 +50,13 @@ export default function App() {
             name="Profile"
             component={UserProfile}
             options={{
-              tabBarShowLabel: false,
-              tabBarIcon: ({ color, size }) => (
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                   name="account"
                   color={color}
-                  size={size}
+                  size={30}
                 />
               ),
             }}
