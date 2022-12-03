@@ -1,1 +1,1 @@
-export { default as BenefitScreen } from './BenefitScreen';
+export { default as selectedBenefitScreen } from './SelectedBenefitScreen';

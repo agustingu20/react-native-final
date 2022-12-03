@@ -31,7 +31,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   codeContainer: {
-    marginTop: 10,
+    marginTop: 30,
+    height: height / 3.5,
   },
   codeTitle: {
     fontSize: 24,
@@ -45,5 +46,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     letterSpacing: 10,
+  },
+  goBackButtonContainer: {
+    marginTop: 'auto',
   },
 });

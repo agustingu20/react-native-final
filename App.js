@@ -1,23 +1,38 @@
-import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { store } from './src/store/store';
-// import { ScrollView, View } from 'react-native';
-// import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
-// import { benefitsArray } from './src/helpers/benefitsArray';
-// import { LogIn } from './src/components/LogIn';
-// import { RegisterUser } from './src/components/RegisterUser';
-// import { styles } from './appStyles';
-// import { BenefitDataBase } from './src/components/BenefitDatabase';
-// import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
-import { BenefitScreen } from './src/screens/BenefitScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
+import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
+import SelectedBenefitScreen from './src/screens/BenefitScreen/SelectedBenefitScreen';
+
+const StackComponent = () => {
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Benefits"
+        component={BenefitsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SelectedBenefit"
+        component={SelectedBenefitScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 export default function App() {
-  // const Stack = createNativeStackNavigator()
   const Tab = createBottomTabNavigator();
 
   return (
@@ -35,9 +50,10 @@ export default function App() {
               ),
             }}
           />
+
           <Tab.Screen
             name="Benefits"
-            component={BenefitScreen}
+            component={StackComponent}
             options={{
               headerShown: false,
               tabBarActiveTintColor: '#C83C45',
@@ -46,6 +62,7 @@ export default function App() {
               ),
             }}
           />
+
           <Tab.Screen
             name="Profile"
             component={UserProfile}
@@ -61,6 +78,7 @@ export default function App() {
               ),
             }}
           />
+
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
