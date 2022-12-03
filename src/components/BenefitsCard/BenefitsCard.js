@@ -3,7 +3,9 @@ import React from 'react';
 // import {
 //   Image, Text, View, TouchableHighlight, Button
 // } from 'react-native';
-import { Card, Title, Paragraph, Button } from 'react-native-paper';
+import {
+  Card, Title, Paragraph, Button,
+} from 'react-native-paper';
 import { styles } from './benefitsCardStyles';
 
 // import { styles } from './benefitsCardStyles';
@@ -29,28 +31,16 @@ const BenefitsCard = ({ benefit }) => {
 
   return (
     <Card style={styles.containerCard}>
-    <Card.Cover source={benefit.url} style={styles.cardImage}/>
-    <Card.Content>
-      <Title style={styles.titleCard}>{benefit.title}</Title>
-      <Paragraph style={styles.textCard}>Válido: {benefit.days}</Paragraph>
-      <Button mode='contained' buttonColor='#C83C45'>
-        Lo quiero!
-      </Button>
-    </Card.Content>
-  </Card>
-);
+      <Card.Cover source={benefit.url} style={styles.cardImage} />
+      <Card.Content>
+        <Title style={styles.titleCard}>{benefit.title}</Title>
+        <Paragraph style={styles.textCard}>Válido: {benefit.days}</Paragraph>
+        <Button mode="contained" buttonColor="#C83C45">
+          Lo quiero!
+        </Button>
+      </Card.Content>
+    </Card>
+  );
 };
-
-{/* <TouchableHighlight
-  onPress={onPressSelectedBenefit}
-  style={styles.containerCard}
->
-  <View>
-    <Text style={styles.titleCard}>{title}</Text>
-    <Image source={{ uri: `${url}` }} style={styles.cardImage} />
-    <Text style={styles.textCard}>{shortDescription}</Text>
-    <Text style={styles.textCard}>{days}</Text>
-  </View>
-</TouchableHighlight> */}
 
 export default BenefitsCard;

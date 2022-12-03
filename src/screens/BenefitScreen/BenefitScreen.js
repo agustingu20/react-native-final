@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
-import { Image, Text, View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 // import { styles } from './benefitScreenStyles';
 import { collection, getDocs } from 'firebase/firestore';
 import BenefitsCard from '../../components/BenefitsCard/BenefitsCard';
-import { db } from '../../../firebase'
+import { db } from '../../../firebase';
 
 const BenefitScreen = () => {
   // const { benefit } = useSelector((state) => state);
@@ -18,13 +18,15 @@ const BenefitScreen = () => {
   //   setRandomCodeBenefit(generateRandomString(13).slice(2, 13).toLocaleUpperCase());
   // }, [benefit]);
 
+  const [isStaff, setIsStaff] = useState(true);
+
   const [benefitData, setBenefitData] = useState([]);
 
   const getBenefits = async () => {
     const { docs } = await getDocs(collection(db, 'benefits'));
 
     const benefitMap = docs.map((benefit) => {
-      return {...benefit.data(), id: benefit.id};
+      return { ...benefit.data(), id: benefit.id };
     });
     setBenefitData(benefitMap);
   };
@@ -38,7 +40,7 @@ const BenefitScreen = () => {
     <ScrollView>
       {benefitData?.map((benefit) => (
             <BenefitsCard benefit={benefit} key={benefit.id} />
-          ))}
+))}
     </ScrollView>
     //   <Image
     //     source={{ uri: `${benefit.value?.url}` }}

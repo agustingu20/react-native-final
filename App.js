@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,7 +17,6 @@ import { BenefitScreen } from './src/screens/BenefitScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
 
 export default function App() {
-  // const [isStaff, setIsStaff] = useState(true);
   // const Stack = createNativeStackNavigator()
   const Tab = createBottomTabNavigator();
 

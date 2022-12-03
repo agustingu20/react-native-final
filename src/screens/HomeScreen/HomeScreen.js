@@ -7,15 +7,10 @@ import CarouselCard from '../../components/CarouselCard/CarouselCard';
 import OutstandingBenefit from '../../components/OutstandingBenefit/OutstandingBenefit';
 import { styles } from './homeScreenStyles';
 import { outstandingBenefit } from '../../helpers/outstandingBenefit';
-import { WelcomeCarrousel } from '../../components/WelcomeCarrousel';
 
 const HomeScreen = ({ isStaff, navigation }) => {
   const handleBenefitNavigate = () => {
     navigation.navigate('Benefits');
-  };
-
-  const handleProfileNavigate = () => {
-    navigation.navigate('Profile');
   };
 
   return (
