@@ -1,28 +1,30 @@
 import { Dimensions, StyleSheet } from 'react-native';
+
 const { width, height } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#F2ECE4',
+    backgroundColor: '#ffff',
   },
   homeStaffHeader: {
-    backgroundColor: '#A65D56',
+    backgroundColor: '#ffff',
   },
   homeUserHeader: {
-    backgroundColor: '#1C66A6',
+    backgroundColor: '#ffff',
   },
   homeImage: {
     width,
     height: height / 4,
   },
-  homeTitleContainer: {
-    marginStart: -150,
-  },
   homeTitle: {
-    fontSize: 32,
-    fontWeight: 600,
-    marginTop: 40,
+    color: '#C83C45',
+    fontSize: 20,
+    fontWeight: 900,
+    marginTop: -100,
     marginBottom: 10,
-  }
+  },
+  benefitButton: {
+    marginVertical: 30,
+  },
 });

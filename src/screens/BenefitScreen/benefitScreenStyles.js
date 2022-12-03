@@ -18,10 +18,10 @@ export const styles = StyleSheet.create({
   benefitTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#A64F03',
+    color: '#fff',
   },
   lineBreaker: {
-    borderBottomColor: '#F2C12E',
+    borderBottomColor: '#fff',
     borderBottomWidth: 1,
     width: 50,
     marginTop: 10,

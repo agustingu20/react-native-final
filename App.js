@@ -1,41 +1,65 @@
 import { Provider } from 'react-redux';
-import { ScrollView, View } from 'react-native';
-import { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { store } from './src/store/store';
-import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
-import { LogIn } from './src/components/LogIn';
-import { RegisterUser } from './src/components/RegisterUser';
-import { styles } from './appStyles';
-import { BenefitDataBase } from './src/components/BenefitDatabase';
-import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
-import HomeScreen from './src/screens/HomeScreen/HomeScreen';
+// import { ScrollView, View } from 'react-native';
+// import BenefitScreen from './src/screens/BenefitScreen/BenefitScreen';
+// import { benefitsArray } from './src/helpers/benefitsArray';
+// import { LogIn } from './src/components/LogIn';
+// import { RegisterUser } from './src/components/RegisterUser';
+// import { styles } from './appStyles';
+// import { BenefitDataBase } from './src/components/BenefitDatabase';
+// import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { BenefitScreen } from './src/screens/BenefitScreen';
+import { UserProfile } from './src/screens/UserProfileScreen';
 
 export default function App() {
-  const [isStaff, setIsStaff] = useState(true);
+  // const [isStaff, setIsStaff] = useState(true);
+  // const Stack = createNativeStackNavigator()
+  const Tab = createBottomTabNavigator();
 
   return (
     <Provider store={store}>
-      <ScrollView>
-        <View>
-          <HomeScreen isStaff={isStaff}/>
-        </View>
-        <View style={styles.container}>
-          <BenefitScreen />
-        </View>
-        <View>
-          <LogIn />
-          {/* <RegisterUser /> */}
-        </View>
-        <View>
-          <RegisterUser />
-        </View>
-        <View>
-          <UserProfileScreen />
-        </View>
-        <View>
-          <BenefitDataBase />
-        </View>
-      </ScrollView>
-        </Provider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              tabBarShowLabel: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="home" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Benefits"
+            component={BenefitScreen}
+            options={{
+              tabBarShowLabel: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="gift" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={UserProfile}
+            options={{
+              tabBarShowLabel: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
