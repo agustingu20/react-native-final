@@ -12,6 +12,7 @@ const OutstandingBenefit = ({
   shortDescription,
   days,
   longDescription,
+  navigation,
 }) => {
   const dispatch = useDispatch();
   const onPressSelectedBenefit = () => {
@@ -24,6 +25,7 @@ const OutstandingBenefit = ({
         longDescription,
       }),
     );
+    navigation.navigate('Benefits', { screen: 'SelectedBenefit' });
   };
 
   return (

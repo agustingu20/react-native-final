@@ -10,7 +10,12 @@ const BenefitsCard = ({ benefit, navigation }) => {
   const dispatch = useDispatch();
 
   const onPressSelectedBenefit = () => {
-    dispatch(setSelectedBenefit({ benefit }));
+    dispatch(setSelectedBenefit({
+      url: benefit.url,
+      shortDescription: benefit.shortDescription,
+      longDescription: benefit.longDescription,
+      title: benefit.title,
+    }));
     navigation.navigate('SelectedBenefit');
   };
 

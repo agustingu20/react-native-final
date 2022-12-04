@@ -7,7 +7,7 @@ import { store } from './src/store/store';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
-import SelectedBenefitScreen from './src/screens/BenefitScreen/SelectedBenefitScreen';
+import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();

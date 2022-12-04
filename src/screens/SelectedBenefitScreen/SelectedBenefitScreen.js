@@ -24,28 +24,28 @@ const SelectedBenefitScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Image
-        source={{ uri: `${benefit.value?.benefit.url}` }}
+        source={{ uri: `${benefit.value?.url}` }}
         style={styles.benefitImage}
         resizeMode={'cover'}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.benefitTitle}>{benefit.value?.benefit.title}</Text>
+        <Text style={styles.benefitTitle}>{benefit.value?.title}</Text>
         {benefit.value?.title && <View style={styles.lineBreaker} />}
         <Text style={styles.benefitLongDescription}>
-          {benefit.value?.benefit.longDescription}
+          {benefit.value?.longDescription}
         </Text>
         <View style={styles.codeContainer}>
-          {benefit.value?.benefit.title && (
+          {benefit.value?.title && (
             <Text style={styles.codeTitle}>Tu código es:</Text>
           )}
-          {benefit.value?.benefit.title && (
+          {benefit.value?.title && (
             <Text style={styles.code}>{randomCodeBenefit}</Text>
           )}
           <View style={styles.goBackButtonContainer}>
             <Button
               mode="contained"
               buttonColor="#C83C45"
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate('Benefits')}
             >
               Volver atrás
             </Button>

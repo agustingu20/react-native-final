@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.homeTitle}>BENEFICIO DESTACADO DEL MES: </Text>
         </View>
 
-        <OutstandingBenefit {...outstandingBenefit} />
+        <OutstandingBenefit {...outstandingBenefit} navigation={navigation}/>
 
         <View style={styles.benefitButton}>
           <Button
