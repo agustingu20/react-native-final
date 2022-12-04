@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
+import { useSelector } from 'react-redux';
 import { collection, getDocs } from 'firebase/firestore';
 import BenefitsCard from '../../components/BenefitsCard/BenefitsCard';
 import { db } from '../../../firebase';
 
 const BenefitsScreen = ({ navigation }) => {
-  const [isStaff, setIsStaff] = useState('true');
+  const { user } = useSelector((state) => state);
   const [benefitData, setBenefitData] = useState([]);
 
   const getBenefits = async () => {
@@ -24,7 +25,7 @@ const BenefitsScreen = ({ navigation }) => {
     <ScrollView>
       {benefitData
         ?.filter(
-          isStaff === 'true'
+          user?.value?.[0].isStaff === 'true'
             ? (benefit) => benefit.isStaff === 'true'
             : (benefit) => benefit.isStaff === 'false',
         )
