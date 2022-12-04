@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import EmailLogin from './EmailLogin';
-import GoogleLogIn from './GoogleLogIn';
-import { styles } from './logInStyles';
+import GoogleLogIn from '../GoogleLogIn/GoogleLogIn';
+import { styles } from '../GoogleLogIn/googleLogInStyle';
 
 const LogIn = () => {
   return (

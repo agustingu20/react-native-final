@@ -2,12 +2,12 @@ import { View, TouchableHighlight, Text } from 'react-native';
 import {
   getAuth, signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { styles } from './logInStyles';
+import { styles } from '../GoogleLogIn/googleLogInStyle';
 import app from '../../../firebase';
 
 const EmailLogin = () => {
   const auth = getAuth(app);
-  
+
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
       .then((userCredential) => {
