@@ -13,7 +13,7 @@ const EmailLogin = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const loginAuthWithEmailAndPassword = () => {
-    signInWithEmailAndPassword(auth, 'agustin_gu@hotmail.com', 'Agustin123')
+    signInWithEmailAndPassword(auth, 'agustin_gu2@hotmail.com', 'Agustin123')
       .then(async (userCredential) => {
         const { user } = userCredential;
         console.log('user', user);

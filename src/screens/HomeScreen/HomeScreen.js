@@ -11,7 +11,6 @@ import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 
 const HomeScreen = ({ navigation }) => {
   const { user } = useSelector((state) => state);
-  console.log('user', user);
 
   const handleBenefitNavigate = () => {
     navigation.navigate('Benefits');
