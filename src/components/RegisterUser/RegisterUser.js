@@ -4,10 +4,12 @@ import {
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
-import app from '../../../firebase';
+import app, { db } from '../../../firebase';
+import EmailLogin from '../LogIn/EmailLogin';
 
-const RegisterUser = () => {
+const RegisterUser = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -29,7 +31,16 @@ const RegisterUser = () => {
         values.password,
       );
       const { user } = userCredential;
+      const infoUser = {
+        displayName: values.name,
+        email: values.email,
+        phoneNumber: null,
+        photoURL: 'https://cdn.discordapp.com/attachments/1040409257620799541/1047986728771801129/unknown.png',
+        isStaff: 'false',
+      };
+      const data = await addDoc(collection(db, 'users'), infoUser);
       console.log(user);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -145,6 +156,9 @@ const RegisterUser = () => {
           ¿Ya sos parte del club?
           <Text style={styles.initSesion}>¡iniciar sesión!</Text>
         </Text>
+      </View>
+      <View>
+        <EmailLogin navigation={navigation}/>
       </View>
     </View>
   );

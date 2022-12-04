@@ -1,18 +1,32 @@
 import { View, TouchableHighlight, Text } from 'react-native';
-import {
-  getAuth, signInWithEmailAndPassword,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { collection, getDocs } from 'firebase/firestore';
+import app, { db } from '../../../firebase';
 import { styles } from './logInStyles';
-import app from '../../../firebase';
+import { setToken } from '../../store/tokenSlice';
+import { setUser } from '../../store/userSlice';
 
-const EmailLogin = () => {
+const EmailLogin = ({ navigation }) => {
   const auth = getAuth(app);
-  
+
+  const dispatch = useDispatch();
+
   const loginAuthWithEmailAndPassword = () => {
-    signInWithEmailAndPassword(auth, 'usuario123@gmail.com', '123458s')
-      .then((userCredential) => {
+    signInWithEmailAndPassword(auth, 'agustin_gu2@hotmail.com', 'Agustin123')
+      .then(async (userCredential) => {
         const { user } = userCredential;
-        console.log(user);
+        console.log('user', user);
+        dispatch(setToken(user.accessToken));
+        const { docs } = await getDocs(collection(db, 'users'));
+        console.log('usuarios', docs);
+        const userData = docs
+          .filter((usuario) => user.email === usuario.data().email)
+          .map((usuario) => {
+            return { ...usuario.data() };
+          });
+        dispatch(setUser(userData));
+        navigation.navigate('Home');
       })
       .catch((error) => {
         console.log(error);
@@ -21,17 +35,17 @@ const EmailLogin = () => {
 
   return (
     <>
-    <TouchableHighlight >
+      <TouchableHighlight>
         <View style={styles.button}>
-        <Text>Crear nuevo usuario</Text>
+          <Text>Crear nuevo usuario</Text>
         </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
 
-    <TouchableHighlight onPress={loginAuthWithEmailAndPassword}>
+      <TouchableHighlight onPress={loginAuthWithEmailAndPassword}>
         <View style={styles.button}>
-        <Text>Iniciar sesión</Text>
+          <Text>Iniciar sesión</Text>
         </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
     </>
   );
 };

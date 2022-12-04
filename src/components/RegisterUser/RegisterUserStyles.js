@@ -6,6 +6,9 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F4F6F7',
     shadowColor: '#ccc',
     borderRadius: '20px',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    marginTop: 20,
   },
   title: {
     padding: '20px',
@@ -42,6 +45,6 @@ export const styles = StyleSheet.create({
     padding: '1rem',
   },
   errorMsg: {
-    color: 'red'
+    color: 'red',
   },
 });
