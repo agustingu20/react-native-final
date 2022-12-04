@@ -8,6 +8,7 @@ import { HomeScreen } from './src/screens/HomeScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
+import RegisterUser from './src/components/RegisterUser/RegisterUser';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
@@ -79,6 +80,21 @@ export default function App() {
             }}
           />
 
+          <Tab.Screen
+            name="Register"
+            component={RegisterUser}
+            options={{
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={30}
+                />
+              ),
+            }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>

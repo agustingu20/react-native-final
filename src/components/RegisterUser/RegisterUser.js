@@ -4,8 +4,9 @@ import {
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
-import app from '../../../firebase';
+import app, { db } from '../../../firebase';
 
 const RegisterUser = () => {
   const {
@@ -29,7 +30,17 @@ const RegisterUser = () => {
         values.password,
       );
       const { user } = userCredential;
+      const infoUser = {
+        displayName: values.name,
+        email: values.email,
+        phoneNumber: null,
+        photoURL: 'https://cdn.discordapp.com/attachments/1040409257620799541/1047986728771801129/unknown.png',
+        uid: user.uid,
+        isStaff: 'false',
+      };
+      const data = await addDoc(collection(db, 'users'), infoUser);
       console.log(user);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
