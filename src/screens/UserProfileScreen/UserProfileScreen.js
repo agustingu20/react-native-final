@@ -3,6 +3,7 @@ import { Image, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { setToken } from '../../store/tokenSlice';
+import { setUser } from '../../store/userSlice';
 import { styles } from './userScreenStyles';
 
 const UserProfileScreen = ({ navigation }) => {
@@ -11,6 +12,7 @@ const UserProfileScreen = ({ navigation }) => {
 
   const closeSession = () => {
     dispatch(setToken(null));
+    dispatch(setUser(null));
     navigation.navigate('Home');
   };
 
