@@ -26,4 +26,7 @@ export const styles = StyleSheet.create({
     fontWeight: 500,
     marginTop: 10,
   },
+  closeSessionButton: {
+    marginTop: 40,
+  },
 });

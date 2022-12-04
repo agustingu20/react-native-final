@@ -7,8 +7,9 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
 import app, { db } from '../../../firebase';
+import EmailLogin from '../LogIn/EmailLogin';
 
-const RegisterUser = () => {
+const RegisterUser = ({ navigation }) => {
   const {
     control,
     handleSubmit,
@@ -35,7 +36,6 @@ const RegisterUser = () => {
         email: values.email,
         phoneNumber: null,
         photoURL: 'https://cdn.discordapp.com/attachments/1040409257620799541/1047986728771801129/unknown.png',
-        uid: user.uid,
         isStaff: 'false',
       };
       const data = await addDoc(collection(db, 'users'), infoUser);
@@ -156,6 +156,9 @@ const RegisterUser = () => {
           ¿Ya sos parte del club?
           <Text style={styles.initSesion}>¡iniciar sesión!</Text>
         </Text>
+      </View>
+      <View>
+        <EmailLogin navigation={navigation}/>
       </View>
     </View>
   );
