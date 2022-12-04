@@ -5,13 +5,11 @@ const { width, height } = Dimensions.get('screen');
 export const styles = StyleSheet.create({
   container: {
     width,
-    height: height / 3,
-    marginBottom: height / 6,
-  },
-  cards: {
-    marginTop: 20,
     alignItems: 'center',
-    width,
+  },
+  imageContainer: {
+    width: width / 1.05,
     height: height / 3.5,
+    borderRadius: 20,
   },
 });

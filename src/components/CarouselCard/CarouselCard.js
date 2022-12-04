@@ -1,25 +1,22 @@
 import React from 'react';
 import { View, Animated } from 'react-native';
-import {
-  benefitsArrayStaff,
-  benefitsArrayUser,
-} from '../../helpers/benefitsArray';
-import BenefitsCard from '../BenefitsCard/BenefitsCard';
+import { homeScreenImages } from '../../helpers/homeImages';
+import { WelcomeCarrousel } from '../WelcomeCarrousel';
 import { styles } from './carouselCardStyles';
 
-const CarouselCard = ({ isStaff }) => {
+const CarouselCard = () => {
   return (
     <View style={styles.container}>
       <Animated.FlatList
-        data={isStaff ? benefitsArrayStaff : benefitsArrayUser}
+        data={homeScreenImages}
         keyExtractor={(item) => item.index}
         horizontal
-        showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={true}
         pagingEnabled
         renderItem={({ item }) => {
           return (
             <View style={styles.cards}>
-              <BenefitsCard {...item} />
+              <WelcomeCarrousel {...item}/>
             </View>
           );
         }}

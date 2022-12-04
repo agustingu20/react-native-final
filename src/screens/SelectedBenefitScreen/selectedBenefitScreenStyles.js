@@ -18,10 +18,10 @@ export const styles = StyleSheet.create({
   benefitTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#A64F03',
+    color: '#fff',
   },
   lineBreaker: {
-    borderBottomColor: '#F2C12E',
+    borderBottomColor: '#fff',
     borderBottomWidth: 1,
     width: 50,
     marginTop: 10,
@@ -31,7 +31,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   codeContainer: {
-    marginTop: 10,
+    marginTop: 30,
+    height: height / 3.5,
   },
   codeTitle: {
     fontSize: 24,
@@ -45,5 +46,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     letterSpacing: 10,
+  },
+  goBackButtonContainer: {
+    marginTop: 'auto',
   },
 });

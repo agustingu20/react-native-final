@@ -21,7 +21,7 @@ const GoogleLogIn = () => {
     signInWithRedirect(auth, googleProvider);
   };
 
-  const getGoogleLogInInfo = () => {
+  const getGoogleLogInInfo = async () => {
     getRedirectResult(auth)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
