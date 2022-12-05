@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import {
-  ScrollView, TouchableHighlight, View, Text,
-} from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { setToken } from '../../store/tokenSlice';
@@ -23,6 +21,14 @@ const LogInScreen = () => {
 
   const navigation = useNavigation();
 
+  const passInput = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const emailInput = (e) => {
+    setEmail(e.target.value);
+  };
+
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -40,15 +46,15 @@ const LogInScreen = () => {
         navigation.navigate('Home');
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
   return (
     <ScrollView>
         <View>
-            <TextInput onChange={(e) => setEmail(e)} placeholder='email@ejemplo.com' style={styles.input}/>
-            <TextInput onChange={(e) => setPassword(e)} placeholder='Escribe tu contraseña' style={styles.input}/>
+            <TextInput onChange={emailInput} placeholder='email@ejemplo.com' style={styles.input}/>
+            <TextInput onChange={passInput} placeholder='Escribe tu contraseña' style={styles.input}/>
         </View>
         <Text>Olvidaste tu contraseña? Toca aquí!</Text>
         {/* <TouchableHighlight style={styles.button} onPress={loginAuthWithEmailAndPassword}>
