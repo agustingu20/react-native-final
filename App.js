@@ -99,6 +99,7 @@ export default function App() {
 
 <Tab.Screen
             name="LogIn"
+            navigation={navigation}
             component={LogInScreen}
             options={{
               headerShown: false,

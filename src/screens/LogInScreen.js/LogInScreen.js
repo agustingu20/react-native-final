@@ -11,7 +11,7 @@ import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
 import { styles } from './logInScreenStyles';
 import app, { db } from '../../../firebase';
 
-const LogInScreen = () => {
+const LogInScreen = ({ navigation }) => {
   const auth = getAuth(app);
 
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const LogInScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigation = useNavigation();
 
   const passInput = (e) => {
     setPassword(e.target.value);
@@ -52,22 +51,21 @@ const LogInScreen = () => {
 
   return (
     <ScrollView>
-        <View>
-            <TextInput onChange={emailInput} placeholder='email@ejemplo.com' style={styles.input}/>
-            <TextInput onChange={passInput} placeholder='Escribe tu contraseña' style={styles.input}/>
-        </View>
-        <Text>Olvidaste tu contraseña? Toca aquí!</Text>
-        {/* <TouchableHighlight style={styles.button} onPress={loginAuthWithEmailAndPassword}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Iniciar sesión</Text>
-        </View>
-      </TouchableHighlight> */}
+      <View style={styles.container}>
+        <TextInput onChange={emailInput} label='Email' style={styles.input} underlineColor='#fff' activeUnderlineColor='#C83C45'/>
+        <TextInput onChange={passInput} label='Contraseña' style={styles.input} secureTextEntry={true} underlineColor='#fff' activeUnderlineColor='#C83C45'/>
+      </View>
+      <Button mode='Text' textColor='#C83C45'>
+        Olvidaste tu contraseña? Toca aquí!
+      </Button>
       <View>
-        <Button mode="contained" onPress={loginAuthWithEmailAndPassword} style={styles.button}>
+        <Button mode='contained' onPress={loginAuthWithEmailAndPassword} style={styles.button}>
             Iniciar sesión
         </Button>
       </View>
-      <Text>No tienes cuenta? Registrate</Text>
+      <Button mode='Text' textColor='#C83C45' onPress={() => navigation.navigate('Benefits')}>
+        No tienes cuenta? Registrate!
+      </Button>
         <View>
             <GoogleLogIn/>
         </View>
