@@ -33,12 +33,6 @@ const HomeScreen = ({ navigation }) => {
 
         <CarouselCard isStaff={user?.value?.[0].isStaff} />
 
-        <View style={styles.homeTitleContainer}>
-          <Text style={styles.homeTitle}>BENEFICIO DESTACADO DEL MES: </Text>
-        </View>
-
-        <OutstandingBenefit {...outstandingBenefit} navigation={navigation}/>
-
         <View style={styles.benefitButton}>
           <Button
             icon="gift"
@@ -49,6 +43,13 @@ const HomeScreen = ({ navigation }) => {
             Conocé todos tus beneficios
           </Button>
         </View>
+
+        <View style={styles.homeTitleContainer}>
+          <Text style={styles.homeTitle}>BENEFICIO DESTACADO DEL MES: </Text>
+        </View>
+
+        <OutstandingBenefit {...outstandingBenefit} navigation={navigation}/>
+
       </View>
     </ScrollView>
   );

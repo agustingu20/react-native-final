@@ -8,8 +8,10 @@ export const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
+    backgroundColor: '#C83C45',
+    padding: 5,
+    marginHorizontal: 60,
     marginVertical: 5,
+    borderRadius: 40,
   },
 });

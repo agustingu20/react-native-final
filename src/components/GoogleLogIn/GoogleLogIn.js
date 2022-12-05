@@ -7,7 +7,9 @@ import {
   getRedirectResult,
 } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { styles } from './logInStyles';
+import GoogleButton from 'react-google-button';
+import { Button } from 'react-native-paper';
+import { styles } from './googleLogInStyle';
 import app from '../../../firebase';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
@@ -44,11 +46,11 @@ const GoogleLogIn = () => {
   }, []);
 
   return (
-    <TouchableHighlight onPress={googleAuth}>
-      <View style={styles.button}>
-        <Text>Iniciar con Google</Text>
+    <Button onPress={googleAuth}>
+      <View style={styles.googleButtonContainer}>
+        <GoogleButton type='light' style={styles.googleButton} />
       </View>
-    </TouchableHighlight>
+    </Button>
   );
 };
 

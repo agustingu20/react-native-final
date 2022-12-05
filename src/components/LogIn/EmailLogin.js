@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { collection, getDocs } from 'firebase/firestore';
 import app, { db } from '../../../firebase';
-import { styles } from './logInStyles';
+// import { styles } from './logInStyles';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
 
@@ -36,13 +36,13 @@ const EmailLogin = ({ navigation }) => {
   return (
     <>
       <TouchableHighlight>
-        <View style={styles.button}>
+        <View>
           <Text>Crear nuevo usuario</Text>
         </View>
       </TouchableHighlight>
 
       <TouchableHighlight onPress={loginAuthWithEmailAndPassword}>
-        <View style={styles.button}>
+        <View>
           <Text>Iniciar sesión</Text>
         </View>
       </TouchableHighlight>

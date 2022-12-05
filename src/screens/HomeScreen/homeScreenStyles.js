@@ -18,13 +18,16 @@ export const styles = StyleSheet.create({
     height: height / 4,
   },
   homeTitle: {
-    color: '#C83C45',
+    color: 'black',
     fontSize: 20,
+    paddingVertical: 50,
+    marginTop: -45,
     fontWeight: 900,
-    marginTop: -100,
-    marginBottom: 10,
+    marginBottom: 30,
   },
   benefitButton: {
-    marginVertical: 30,
+    marginTop: -90,
+    marginBottom: 50,
+    padding: 8,
   },
 });

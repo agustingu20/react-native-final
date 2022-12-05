@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { store } from './src/store/store';
 import { HomeScreen } from './src/screens/HomeScreen';
+import { LogInScreen } from './src/screens/LogInScreen.js';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
 import RegisterUser from './src/components/RegisterUser/RegisterUser';
@@ -66,37 +67,49 @@ export function App() {
 
         {token.value ? (
           <Tab.Screen
-          name="Profile"
-          component={UserProfileScreen}
-          options={{
-            headerShown: false,
-            tabBarActiveTintColor: '#C83C45',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="account"
-                color={color}
-                size={30}
-              />
-            ),
-          }}
-        />
+            name="Profile"
+            component={UserProfileScreen}
+            options={{
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={30}
+                />
+              ),
+            }}
+          />
         ) : (
           <Tab.Screen
-          name="Register"
-          component={RegisterUser}
+            name="Register"
+            component={RegisterUser}
+            options={{
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={30}
+                />
+              ),
+            }}
+          />
+        )}
+
+        <Tab.Screen
+          name="LogIn"
+          component={LogInScreen}
           options={{
             headerShown: false,
             tabBarActiveTintColor: '#C83C45',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="account"
-                color={color}
-                size={30}
-              />
+              <MaterialCommunityIcons name="star" color={color} size={30} />
             ),
           }}
         />
-        )}
       </Tab.Navigator>
     </NavigationContainer>
   );
