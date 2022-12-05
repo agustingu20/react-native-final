@@ -31,16 +31,18 @@ const GoogleLogIn = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const { user } = result;
-        const infoUser = [{
-          displayName: user.displayName,
-          email: user.email,
-          phoneNumber: user.phoneNumber,
-          photoURL: user.photoURL,
-          isStaff: 'false',
-        }];
+        const infoUser = [
+          {
+            displayName: user.displayName,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            photoURL: user.photoURL,
+            isStaff: 'false',
+          },
+        ];
         dispatch(setUser(infoUser));
         dispatch(setToken(token));
-        const data = await addDoc(collection(db, 'users'), infoUser);
+        const data = await addDoc(collection(db, 'users'), infoUser[0]);
       })
       .catch((error) => {
         console.error(error);
