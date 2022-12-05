@@ -7,11 +7,12 @@ import {
   getRedirectResult,
 } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
+import GoogleButton from 'react-google-button';
+import { Button } from 'react-native-paper';
 import { styles } from './googleLogInStyle';
 import app from '../../../firebase';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
-import GoogleButton from 'react-google-button';
 
 const GoogleLogIn = () => {
   const dispatch = useDispatch();
@@ -45,11 +46,11 @@ const GoogleLogIn = () => {
   }, []);
 
   return (
-    <TouchableHighlight onPress={googleAuth}>
+    <Button onPress={googleAuth}>
       <View style={styles.googleButtonContainer}>
         <GoogleButton type='light' style={styles.googleButton} />
       </View>
-    </TouchableHighlight>
+    </Button>
   );
 };
 

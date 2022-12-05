@@ -6,10 +6,10 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { store } from './src/store/store';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { UserProfile } from './src/screens/UserProfileScreen';
+import { LogInScreen } from './src/screens/LogInScreen.js';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
 import RegisterUser from './src/components/RegisterUser/RegisterUser';
-import LogIn from './src/components/LogIn/LogIn';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
@@ -54,7 +54,7 @@ export default function App() {
           />
 
           <Tab.Screen
-            name="Benefits"
+            name="Beneficios"
             component={StackComponent}
             options={{
               headerShown: false,
@@ -66,7 +66,7 @@ export default function App() {
           />
 
           <Tab.Screen
-            name="Profile"
+            name="Perfil"
             component={UserProfile}
             options={{
               headerShown: false,
@@ -82,14 +82,14 @@ export default function App() {
           />
 
 <Tab.Screen
-            name="Register"
+            name='Salir'
             component={RegisterUser}
             options={{
               headerShown: false,
               tabBarActiveTintColor: '#C83C45',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
-                  name="star"
+                  name="logout"
                   color={color}
                   size={30}
                 />
@@ -99,7 +99,7 @@ export default function App() {
 
 <Tab.Screen
             name="LogIn"
-            component={LogIn}
+            component={LogInScreen}
             options={{
               headerShown: false,
               tabBarActiveTintColor: '#C83C45',
