@@ -5,6 +5,8 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     marginVertical: 10,
     marginHorizontal: 70,
+    height: 150,
+    width: '90%',
   },
   googleButton: {
     borderRadius: 6,

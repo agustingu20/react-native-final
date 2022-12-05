@@ -7,9 +7,8 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
 import app, { db } from '../../../firebase';
-import EmailLogin from '../LogIn/EmailLogin';
 
-const RegisterUser = ({ navigation }) => {
+const RegisterUser = () => {
   const {
     control,
     handleSubmit,
@@ -156,9 +155,6 @@ const RegisterUser = ({ navigation }) => {
           ¿Ya sos parte del club?
           <Text style={styles.initSesion}>¡iniciar sesión!</Text>
         </Text>
-      </View>
-      <View>
-        <EmailLogin navigation={navigation}/>
       </View>
     </View>
   );

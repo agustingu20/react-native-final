@@ -33,10 +33,8 @@ const LogInScreen = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const { user } = userCredential;
-        console.log('user', user);
         dispatch(setToken(user.accessToken));
         const { docs } = await getDocs(collection(db, 'users'));
-        console.log('usuarios', docs);
         const userData = docs
           .filter((usuario) => user.email === usuario.data().email)
           .map((usuario) => {
@@ -57,11 +55,6 @@ const LogInScreen = () => {
             <TextInput onChange={passInput} placeholder='Escribe tu contraseña' style={styles.input}/>
         </View>
         <Text>Olvidaste tu contraseña? Toca aquí!</Text>
-        {/* <TouchableHighlight style={styles.button} onPress={loginAuthWithEmailAndPassword}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Iniciar sesión</Text>
-        </View>
-      </TouchableHighlight> */}
       <View>
         <Button mode="contained" onPress={loginAuthWithEmailAndPassword} style={styles.button}>
             Iniciar sesión

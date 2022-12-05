@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
 
-        <CarouselCard isStaff={user?.value?.[0].isStaff} />
+        <CarouselCard />
 
         <View style={styles.benefitButton}>
           <Button

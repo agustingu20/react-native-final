@@ -1,46 +1,52 @@
 import React, { useEffect } from 'react';
-import { Text, View, TouchableHighlight } from 'react-native';
+import { View } from 'react-native';
+import { addDoc, collection } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
 import {
   GoogleAuthProvider,
   getAuth,
   signInWithRedirect,
   getRedirectResult,
 } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
 import GoogleButton from 'react-google-button';
 import { Button } from 'react-native-paper';
 import { styles } from './googleLogInStyle';
-import app from '../../../firebase';
-import { setToken } from '../../store/tokenSlice';
+import app, { db } from '../../../firebase';
 import { setUser } from '../../store/userSlice';
+import { setToken } from '../../store/tokenSlice';
 
 const GoogleLogIn = () => {
-  const dispatch = useDispatch();
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+
+  const dispatch = useDispatch();
 
   const googleAuth = () => {
     signInWithRedirect(auth, googleProvider);
   };
 
-  const getGoogleLogInInfo = async () => {
+  const getGoogleLogInInfo = () => {
     getRedirectResult(auth)
-      .then((result) => {
+      .then(async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const { user } = result;
-        dispatch(setUser({
+        const infoUser = [{
           displayName: user.displayName,
           email: user.email,
           phoneNumber: user.phoneNumber,
           photoURL: user.photoURL,
-        }));
+          isStaff: 'false',
+        }];
+        dispatch(setUser(infoUser));
         dispatch(setToken(token));
+        const data = await addDoc(collection(db, 'users'), infoUser);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
   useEffect(() => {
     getGoogleLogInInfo();
   }, []);
@@ -48,7 +54,7 @@ const GoogleLogIn = () => {
   return (
     <Button onPress={googleAuth}>
       <View style={styles.googleButtonContainer}>
-        <GoogleButton type='light' style={styles.googleButton} />
+        <GoogleButton type="light" style={styles.googleButton} />
       </View>
     </Button>
   );

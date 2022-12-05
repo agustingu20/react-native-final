@@ -65,6 +65,18 @@ export function App() {
           }}
         />
 
+        {!token.value && <Tab.Screen
+          name="LogIn"
+          component={LogInScreen}
+          options={{
+            headerShown: false,
+            tabBarActiveTintColor: '#C83C45',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="star" color={color} size={30} />
+            ),
+          }}
+        />}
+
         {token.value ? (
           <Tab.Screen
             name="Profile"
@@ -98,18 +110,6 @@ export function App() {
             }}
           />
         )}
-
-        <Tab.Screen
-          name="LogIn"
-          component={LogInScreen}
-          options={{
-            headerShown: false,
-            tabBarActiveTintColor: '#C83C45',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="star" color={color} size={30} />
-            ),
-          }}
-        />
       </Tab.Navigator>
     </NavigationContainer>
   );
