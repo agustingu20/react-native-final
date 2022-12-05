@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { ScrollView, Text, View } from 'react-native';
@@ -18,7 +18,13 @@ const LogInScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  useEffect(() => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }, []);
 
   const passInput = (e) => {
     setPassword(e.target.value);
@@ -27,7 +33,9 @@ const LogInScreen = ({ navigation }) => {
   const emailInput = (e) => {
     setEmail(e.target.value);
   };
-
+  const handleBenefitNavigate = () => {
+    navigation.navigate('Register');
+  };
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -52,23 +60,39 @@ const LogInScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <TextInput onChange={emailInput} label='Email' style={styles.input} underlineColor='#fff' activeUnderlineColor='#C83C45'/>
-        <TextInput onChange={passInput} label='Contraseña' style={styles.input} secureTextEntry={true} underlineColor='#fff' activeUnderlineColor='#C83C45'/>
+        <TextInput
+          onChange={emailInput}
+          label="Email"
+          style={styles.input}
+          underlineColor="#fff"
+          activeUnderlineColor="#C83C45"
+        />
+        <TextInput
+          onChange={passInput}
+          label="Contraseña"
+          style={styles.input}
+          secureTextEntry={true}
+          underlineColor="#fff"
+          activeUnderlineColor="#C83C45"
+        />
       </View>
-      <Button mode='Text' textColor='#C83C45'>
+      <Button mode="Text" textColor="#C83C45">
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
-        <Button mode='contained' onPress={loginAuthWithEmailAndPassword} style={styles.button}>
-            Iniciar sesión
+        <Button
+          mode="contained"
+          onPress={loginAuthWithEmailAndPassword}
+          style={styles.button}>
+          Iniciar sesión
         </Button>
       </View>
-      <Button mode='Text' textColor='#C83C45' onPress={() => navigation.navigate('Benefits')}>
+      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!
       </Button>
-        <View>
-            <GoogleLogIn/>
-        </View>
+      <View>
+        <GoogleLogIn />
+      </View>
     </ScrollView>
   );
 };

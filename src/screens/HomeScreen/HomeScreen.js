@@ -10,7 +10,7 @@ import { outstandingBenefit } from '../../helpers/outstandingBenefit';
 
 const HomeScreen = ({ navigation }) => {
   const handleBenefitNavigate = () => {
-    navigation.navigate('Benefits');
+    navigation.navigate('Beneficios');
   };
 
   const [isStaff, setIsStaff] = useState('true');

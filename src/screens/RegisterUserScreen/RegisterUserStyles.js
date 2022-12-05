@@ -42,6 +42,6 @@ export const styles = StyleSheet.create({
     padding: '1rem',
   },
   errorMsg: {
-    color: 'red'
+    color: 'red',
   },
 });

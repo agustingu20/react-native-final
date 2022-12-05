@@ -9,11 +9,10 @@ import { UserProfile } from './src/screens/UserProfileScreen';
 import { LogInScreen } from './src/screens/LogInScreen.js';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
-import RegisterUser from './src/components/RegisterUser/RegisterUser';
+import RegisterUser from './src/screens/RegisterUserScreen/RegisterUser';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -26,6 +25,28 @@ const StackComponent = () => {
       <Stack.Screen
         name="SelectedBenefit"
         component={SelectedBenefitScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const StackComponentLogin = () => {
+  const Stack = createNativeStackNavigator();
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LogInScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegisterUser}
         options={{
           headerShown: false,
         }}
@@ -81,35 +102,25 @@ export default function App() {
             }}
           />
 
-<Tab.Screen
-            name='Salir'
-            component={RegisterUser}
+          <Tab.Screen
+            name="LogIn"
+            component={StackComponentLogin}
             options={{
               headerShown: false,
               tabBarActiveTintColor: '#C83C45',
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons
-                  name="logout"
-                  color={color}
-                  size={30}
-                />
+                <MaterialCommunityIcons name="star" color={color} size={30} />
               ),
             }}
           />
-
-<Tab.Screen
-            name="LogIn"
-            navigation={navigation}
-            component={LogInScreen}
+          <Tab.Screen
+            name="Salir"
+            component={StackComponentLogin}
             options={{
               headerShown: false,
               tabBarActiveTintColor: '#C83C45',
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons
-                  name="star"
-                  color={color}
-                  size={30}
-                />
+                <MaterialCommunityIcons name="logout" color={color} size={30} />
               ),
             }}
           />
