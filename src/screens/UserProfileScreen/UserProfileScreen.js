@@ -19,17 +19,17 @@ const UserProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={`${user?.value[0].photoURL}`}
+        source={`${user?.value?.[0].photoURL}`}
         style={styles.profileImage}
       />
       {user.value && <Text style={styles.profileTitle}>Nombre</Text>}
-      <Text style={styles.profileText}>{user?.value[0].displayName}</Text>
+      <Text style={styles.profileText}>{user?.value?.[0].displayName}</Text>
       {user.value && <Text style={styles.profileTitle}>Email</Text>}
-      <Text style={styles.profileText}>{user?.value[0].email}</Text>
+      <Text style={styles.profileText}>{user?.value?.[0].email}</Text>
       {user.value && <Text style={styles.profileTitle}>Tipo de usuario</Text>}
       {user.value && (
         <Text style={styles.profileText}>
-          {user?.value[0].isStaff === 'true' ? 'Staff' : 'User'}
+          {user?.value?.[0].isStaff === 'true' ? 'Staff' : 'User'}
         </Text>
       )}
       <Button

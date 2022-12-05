@@ -7,9 +7,8 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
 import app, { db } from '../../../firebase';
-import EmailLogin from '../LogIn/EmailLogin';
 
-const RegisterUser = ({ navigation }) => {
+const RegisterUser = () => {
   const {
     control,
     handleSubmit,
@@ -69,7 +68,7 @@ const RegisterUser = ({ navigation }) => {
             defaultValue={defaultValues.name}
           />
           {errors.name?.type === 'required' && (
-            <Text style={styles.errorMsg}>nombre requerido</Text>
+            <Text style={styles.errorMsg}>No olvides colocar tu nombre!</Text>
           )}
           {errors.name?.type === 'maxLength' && (
             <Text style={styles.errorMsg}>nombre maximo 25 caracteres</Text>
@@ -95,10 +94,10 @@ const RegisterUser = ({ navigation }) => {
             defaultValue={defaultValues.email}
           />
           {errors.email?.type === 'pattern' && (
-            <Text style={styles.errorMsg}>ingrese un mail válido</Text>
+            <Text style={styles.errorMsg}>Ingresa un mail válido</Text>
           )}
           {errors.email?.type === 'required' && (
-            <Text style={styles.errorMsg}>campo email requerido</Text>
+            <Text style={styles.errorMsg}>No olvides colocar tu email!</Text>
           )}
           <Controller
             control={control}
@@ -119,7 +118,7 @@ const RegisterUser = ({ navigation }) => {
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
-            <Text style={styles.errorMsg}>Contraseña requerida</Text>
+            <Text style={styles.errorMsg}>No olvides colocar tu contraseña!</Text>
           )}
           {errors.password?.type === 'minLength' && (
             <Text style={styles.errorMsg}>Contraseña minimo 8 caracteres</Text>
@@ -156,9 +155,6 @@ const RegisterUser = ({ navigation }) => {
           ¿Ya sos parte del club?
           <Text style={styles.initSesion}>¡iniciar sesión!</Text>
         </Text>
-      </View>
-      <View>
-        <EmailLogin navigation={navigation}/>
       </View>
     </View>
   );
