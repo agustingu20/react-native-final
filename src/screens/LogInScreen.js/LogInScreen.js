@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { ScrollView, View } from 'react-native';
+import {
+  ScrollView, View, Image, Text,
+} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
@@ -50,6 +52,9 @@ const LogInScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Image source={{ uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713538647724154/Logo1.png' }} style={styles.logo}/>
+        <Text style={styles.logInText}>Iniciar Sesión</Text>
+      <View style={styles.inputContainer}>
         <TextInput
           onChange={emailInput}
           label="Email"
@@ -66,6 +71,7 @@ const LogInScreen = ({ navigation }) => {
           activeUnderlineColor="#C83C45"
         />
       </View>
+
       <Button mode="Text" textColor="#C83C45">
         Olvidaste tu contraseña? Toca aquí!
       </Button>
@@ -83,6 +89,7 @@ const LogInScreen = ({ navigation }) => {
       </Button>
       <View>
         <GoogleLogIn />
+      </View>
       </View>
     </ScrollView>
   );

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {
-  Button, SafeAreaView, Text, TextInput, View,
+  SafeAreaView, Text, View,
 } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { useForm, Controller } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { styles } from './RegisterUserStyles';
+// import { styles } from './RegisterUserStyles';
 import app from '../../../firebase';
 
 const RegisterUser = () => {
@@ -42,19 +43,17 @@ const RegisterUser = () => {
   };
 
   return (
-    <View style={styles.containerR}>
-      <Text style={styles.title}>Ingresa tus Datos</Text>
-      <View style={styles.containerInputs}>
+    <View>
+      <Text>Ingresa tus Datos</Text>
+      <View>
         <SafeAreaView>
           <Controller
             control={control}
             rules={{ required: true, maxLength: 25 }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <>
                 <Text>Nombre</Text>
                 <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
                 />
@@ -64,10 +63,10 @@ const RegisterUser = () => {
             defaultValue={defaultValues.name}
           />
           {errors.name?.type === 'required' && (
-            <Text style={styles.errorMsg}>No olvides colocar tu nombre!</Text>
+            <Text>No olvides colocar tu nombre!</Text>
           )}
           {errors.name?.type === 'maxLength' && (
-            <Text style={styles.errorMsg}>nombre maximo 25 caracteres</Text>
+            <Text>nombre maximo 25 caracteres</Text>
           )}
           <Controller
             control={control}
@@ -79,7 +78,6 @@ const RegisterUser = () => {
               <>
                 <Text>Email</Text>
                 <TextInput
-                  style={styles.input}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
@@ -90,10 +88,10 @@ const RegisterUser = () => {
             defaultValue={defaultValues.email}
           />
           {errors.email?.type === 'pattern' && (
-            <Text style={styles.errorMsg}>Ingresa un mail válido</Text>
+            <Text>Ingresa un mail válido</Text>
           )}
           {errors.email?.type === 'required' && (
-            <Text style={styles.errorMsg}>No olvides colocar tu email!</Text>
+            <Text>No olvides colocar tu email!</Text>
           )}
           <Controller
             control={control}
@@ -102,7 +100,6 @@ const RegisterUser = () => {
               <>
                 <Text>Contraseña</Text>
                 <TextInput
-                  style={styles.input}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
@@ -114,15 +111,15 @@ const RegisterUser = () => {
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
-            <Text style={styles.errorMsg}>
+            <Text>
               No olvides colocar tu contraseña!
             </Text>
           )}
           {errors.password?.type === 'minLength' && (
-            <Text style={styles.errorMsg}>Contraseña minimo 8 caracteres</Text>
+            <Text >Contraseña minimo 8 caracteres</Text>
           )}
           {errors.password?.type === 'maxLength' && (
-            <Text style={styles.errorMsg}>Contraseña maximo 25 caracteres</Text>
+            <Text>Contraseña maximo 25 caracteres</Text>
           )}
           <Controller
             control={control}
@@ -130,7 +127,6 @@ const RegisterUser = () => {
               <>
                 <Text>Repetir Contraseña</Text>
                 <TextInput
-                  style={styles.input}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
@@ -142,19 +138,18 @@ const RegisterUser = () => {
             defaultValue={defaultValues.password2}
           />
           {isError && (
-            <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
+            <Text>Las contraseñas no coinciden</Text>
           )}
         </SafeAreaView>
         <Button
           title="Adherite"
-          style={styles.buttonE}
           onPress={handleSubmit(submit)}
         />
       </View>
-      <View style={styles.divSesion}>
-        <Text style={styles.sesion}>
+      <View>
+        <Text>
           ¿Ya sos parte del club?
-          <Text style={styles.initSesion}>¡iniciar sesión!</Text>
+          <Text>¡iniciar sesión!</Text>
         </Text>
       </View>
     </View>
