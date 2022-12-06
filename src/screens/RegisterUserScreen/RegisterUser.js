@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, SafeAreaView, Text, TextInput, View,
 } from 'react-native';
@@ -8,6 +8,8 @@ import { styles } from './RegisterUserStyles';
 import app from '../../../firebase';
 
 const RegisterUser = () => {
+  const [isError, setIsError] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -22,7 +24,11 @@ const RegisterUser = () => {
   };
   const submit = async (values) => {
     try {
-      if (values.password !== values.password2) return alert('las contraseñas no coinciden');
+      if (values.password !== values.password2) {
+        setIsError(true);
+      } else {
+        setIsError(false);
+      }
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         values.email,
@@ -108,7 +114,9 @@ const RegisterUser = () => {
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
-            <Text style={styles.errorMsg}>No olvides colocar tu contraseña!</Text>
+            <Text style={styles.errorMsg}>
+              No olvides colocar tu contraseña!
+            </Text>
           )}
           {errors.password?.type === 'minLength' && (
             <Text style={styles.errorMsg}>Contraseña minimo 8 caracteres</Text>
@@ -133,6 +141,9 @@ const RegisterUser = () => {
             name="password2"
             defaultValue={defaultValues.password2}
           />
+          {isError && (
+            <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
+          )}
         </SafeAreaView>
         <Button
           title="Adherite"
