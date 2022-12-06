@@ -5,15 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { store } from './src/store/store';
 import { HomeScreen } from './src/screens/HomeScreen';
-import { LogInScreen } from './src/screens/LogInScreen.js';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
 import RegisterUser from './src/components/RegisterUser/RegisterUser';
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
+import LogInScreen from './src/screens/LogInScreen.js/LogInScreen';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
-
   return (
     <Stack.Navigator>
       <Stack.Screen

@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
   const { user } = useSelector((state) => state);
 
   const handleBenefitNavigate = () => {
-    navigation.navigate('Benefits');
+    navigation.navigate('Beneficios');
   };
 
   return (

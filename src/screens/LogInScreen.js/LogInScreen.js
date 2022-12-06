@@ -2,24 +2,21 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
 import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
 import { styles } from './logInScreenStyles';
 import app, { db } from '../../../firebase';
 
-const LogInScreen = () => {
+const LogInScreen = ({ navigation }) => {
   const auth = getAuth(app);
 
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigation = useNavigation();
 
   const passInput = (e) => {
     setPassword(e.target.value);
@@ -28,7 +25,9 @@ const LogInScreen = () => {
   const emailInput = (e) => {
     setEmail(e.target.value);
   };
-
+  const handleBenefitNavigate = () => {
+    navigation.navigate('Register');
+  };
   const loginAuthWithEmailAndPassword = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -50,20 +49,41 @@ const LogInScreen = () => {
 
   return (
     <ScrollView>
-        <View>
-            <TextInput onChange={emailInput} placeholder='email@ejemplo.com' style={styles.input}/>
-            <TextInput onChange={passInput} placeholder='Escribe tu contraseña' style={styles.input}/>
-        </View>
-        <Text>Olvidaste tu contraseña? Toca aquí!</Text>
+      <View style={styles.container}>
+        <TextInput
+          onChange={emailInput}
+          label="Email"
+          style={styles.input}
+          underlineColor="#fff"
+          activeUnderlineColor="#C83C45"
+        />
+        <TextInput
+          onChange={passInput}
+          label="Contraseña"
+          style={styles.input}
+          secureTextEntry={true}
+          underlineColor="#fff"
+          activeUnderlineColor="#C83C45"
+        />
+      </View>
+      <Button mode="Text" textColor="#C83C45">
+        Olvidaste tu contraseña? Toca aquí!
+      </Button>
       <View>
-        <Button mode="contained" onPress={loginAuthWithEmailAndPassword} style={styles.button}>
-            Iniciar sesión
+        <Button
+          mode="contained"
+          onPress={loginAuthWithEmailAndPassword}
+          style={styles.button}
+        >
+          Iniciar sesión
         </Button>
       </View>
-      <Text>No tienes cuenta? Registrate</Text>
-        <View>
-            <GoogleLogIn/>
-        </View>
+      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
+        No tienes cuenta? Registrate!
+      </Button>
+      <View>
+        <GoogleLogIn />
+      </View>
     </ScrollView>
   );
 };
