@@ -39,6 +39,7 @@ const HomeScreen = ({ navigation }) => {
             mode="contained"
             onPress={handleBenefitNavigate}
             buttonColor="#C83C45"
+            style={styles.button}
           >
             Conocé todos tus beneficios
           </Button>

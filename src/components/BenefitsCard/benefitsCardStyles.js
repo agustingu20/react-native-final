@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   containerCard: {
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 10,
     borderColor: '#F4F6F7',
     padding: 16,
     width: '90%',
-    backgroundColor: '#F4F6F7',
+    backgroundColor: '#fff',
     marginVertical: 10,
     marginHorizontal: 20,
     shadowColor: '#000',
@@ -22,15 +22,16 @@ export const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: 120,
+    backgroundColor: '#fff',
     borderRadius: 4,
     marginBottom: 10,
   },
   titleCard: {
-    backgroundColor: '#F4F6F7',
+    backgroundColor: '#fff',
     borderRadius: 4,
     width: 300,
-    fontSize: 18,
-    fontWeight: 600,
+    fontSize: 22,
+    fontWeight: 700,
     color: '#172026',
     textAlign: 'center',
     marginBottom: 10,
@@ -39,5 +40,12 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 500,
     marginBottom: 20,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#C83C45',
+    padding: 7,
+    marginHorizontal: 60,
+    marginVertical: 5,
   },
 });

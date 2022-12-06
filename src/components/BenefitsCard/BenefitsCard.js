@@ -29,6 +29,7 @@ const BenefitsCard = ({ benefit, navigation }) => {
           mode="contained"
           buttonColor="#C83C45"
           onPress={onPressSelectedBenefit}
+          style={styles.button}
         >
           Lo quiero!
         </Button>

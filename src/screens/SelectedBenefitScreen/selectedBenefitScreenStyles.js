@@ -4,7 +4,7 @@ const { width, height } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F2ECE4',
+    backgroundColor: '#fff',
   },
   benefitImage: {
     width,
@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
   },
   benefitTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#C83C45',
   },
   lineBreaker: {
     borderBottomColor: '#fff',
@@ -44,10 +44,17 @@ export const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: 50,
     letterSpacing: 10,
   },
   goBackButtonContainer: {
     marginTop: 'auto',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#C83C45',
+    padding: 7,
+    marginHorizontal: 60,
+    marginVertical: 5,
   },
 });
