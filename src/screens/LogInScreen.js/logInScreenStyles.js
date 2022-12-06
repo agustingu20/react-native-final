@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#C83C45',
-    padding: 5,
+    padding: 7,
     marginHorizontal: 60,
     marginVertical: 5,
     borderRadius: 40,

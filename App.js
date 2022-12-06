@@ -41,7 +41,7 @@ export function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen
+        {token.value && <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
@@ -51,9 +51,9 @@ export function App() {
               <MaterialCommunityIcons name="home" color={color} size={30} />
             ),
           }}
-        />
+        />}
 
-        <Tab.Screen
+        {token.value && <Tab.Screen
           name="Benefits"
           component={StackComponent}
           options={{
@@ -63,7 +63,7 @@ export function App() {
               <MaterialCommunityIcons name="gift" color={color} size={size} />
             ),
           }}
-        />
+        />}
 
         {!token.value && <Tab.Screen
           name="LogIn"

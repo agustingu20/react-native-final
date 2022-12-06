@@ -4,11 +4,10 @@ export const styles = StyleSheet.create({
   googleButtonContainer: {
     alignContent: 'center',
     marginVertical: 10,
-    marginHorizontal: 70,
-    height: 150,
-    width: '90%',
   },
   googleButton: {
-    borderRadius: 6,
+    borderRadius: 20,
+    padding: 5,
+    width: 280,
   },
 });

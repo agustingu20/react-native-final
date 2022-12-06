@@ -13,7 +13,7 @@ const UserProfileScreen = ({ navigation }) => {
   const closeSession = () => {
     dispatch(setToken(null));
     dispatch(setUser(null));
-    navigation.navigate('Home');
+    navigation.navigate('LogIn');
   };
 
   return (

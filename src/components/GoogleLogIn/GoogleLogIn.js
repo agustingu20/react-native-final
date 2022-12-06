@@ -56,7 +56,7 @@ const GoogleLogIn = () => {
   return (
     <Button onPress={googleAuth}>
       <View style={styles.googleButtonContainer}>
-        <GoogleButton type="light" style={styles.googleButton} />
+        <GoogleButton label='Iniciar Sesión con Google' type="light" style={styles.googleButton} />
       </View>
     </Button>
   );
