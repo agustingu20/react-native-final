@@ -71,7 +71,7 @@ export function App() {
             headerShown: false,
             tabBarActiveTintColor: '#C83C45',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="star" color={color} size={30} />
+              <MaterialCommunityIcons name="login" color={color} size={30} />
             ),
           }}
         />}
@@ -101,7 +101,7 @@ export function App() {
               tabBarActiveTintColor: '#C83C45',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
-                  name="account"
+                  name="file-sign"
                   color={color}
                   size={30}
                 />
