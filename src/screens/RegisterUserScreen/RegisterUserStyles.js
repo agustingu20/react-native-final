@@ -1,47 +1,46 @@
-// import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-// export const styles = StyleSheet.create({
-//   containerR: {
-//     width: '90%',
-//     backgroundColor: '#F4F6F7',
-//     shadowColor: '#ccc',
-//     borderRadius: '20px',
-//   },
-//   title: {
-//     padding: '20px',
-//     textAlign: 'center',
-//     fontSize: '1rem',
-//     fontWeight: 'bold',
-//   },
-//   containerInputs: {
-//     width: '80%',
-//     margin: 'auto',
-//   },
-//   input: {
-//     width: '100%',
-//     backgroundColor: '#fff',
-//     borderColor: '#777',
-//     margin: 'auto',
-//     padding: '15px',
-//     borderRadius: '10px',
-//     marginBottom: '10px',
-//   },
-//   buttonE: {
-//     padding: '20px',
-//     marginBottom: '20px',
-//   },
-//   divSesion: {
-//     borderTopColor: 'black',
-//   },
-//   initSesion: {
-//     color: 'blue',
-//     marginStart: '3px',
-//   },
-//   sesion: {
-//     textAlign: 'center',
-//     padding: '1rem',
-//   },
-//   errorMsg: {
-//     color: 'red',
-//   },
-// });
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    marginTop: 50,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+  },
+  logo: {
+    width: 180,
+    height: 180,
+    marginTop: 20,
+    alignSelf: 'center',
+  },
+  registerText: {
+    fontSize: 30,
+    fontWeight: '600',
+    color: '#C83C45',
+    marginVertical: 22,
+    alignSelf: 'center',
+  },
+  inputContainer: {
+    width: '85%',
+    alignSelf: 'center',
+  },
+  input: {
+    backgroundColor: '#fff',
+    marginVertical: 10,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#C83C45',
+    padding: 7,
+    marginHorizontal: 60,
+    marginVertical: 5,
+  },
+  buttonText: {
+    marginVertical: 10,
+  },
+  errorMsg: {
+    color: '#C83C45',
+  },
+});
