@@ -9,10 +9,10 @@ import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
 import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedBenefitScreen';
 import RegisterUser from './src/components/RegisterUser/RegisterUser';
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
+import LogInScreen from './src/screens/LogInScreen.js/LogInScreen';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -40,7 +40,7 @@ export function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen
+        {token.value && <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
@@ -50,9 +50,9 @@ export function App() {
               <MaterialCommunityIcons name="home" color={color} size={30} />
             ),
           }}
-        />
+        />}
 
-        <Tab.Screen
+        {token.value && <Tab.Screen
           name="Benefits"
           component={StackComponent}
           options={{
@@ -62,40 +62,52 @@ export function App() {
               <MaterialCommunityIcons name="gift" color={color} size={size} />
             ),
           }}
-        />
+        />}
+
+        {!token.value && <Tab.Screen
+          name="LogIn"
+          component={LogInScreen}
+          options={{
+            headerShown: false,
+            tabBarActiveTintColor: '#C83C45',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="star" color={color} size={30} />
+            ),
+          }}
+        />}
 
         {token.value ? (
           <Tab.Screen
-          name="Profile"
-          component={UserProfileScreen}
-          options={{
-            headerShown: false,
-            tabBarActiveTintColor: '#C83C45',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="account"
-                color={color}
-                size={30}
-              />
-            ),
-          }}
-        />
+            name="Profile"
+            component={UserProfileScreen}
+            options={{
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={30}
+                />
+              ),
+            }}
+          />
         ) : (
           <Tab.Screen
-          name="Register"
-          component={RegisterUser}
-          options={{
-            headerShown: false,
-            tabBarActiveTintColor: '#C83C45',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="account"
-                color={color}
-                size={30}
-              />
-            ),
-          }}
-        />
+            name="Register"
+            component={RegisterUser}
+            options={{
+              headerShown: false,
+              tabBarActiveTintColor: '#C83C45',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={30}
+                />
+              ),
+            }}
+          />
         )}
       </Tab.Navigator>
     </NavigationContainer>

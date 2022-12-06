@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, SafeAreaView, Text, TextInput, View,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { addDoc, collection } from 'firebase/firestore';
 import { styles } from './RegisterUserStyles';
-import app, { db } from '../../../firebase';
+import app from '../../../firebase';
 
 const RegisterUser = () => {
+  const [isError, setIsError] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -23,23 +24,18 @@ const RegisterUser = () => {
   };
   const submit = async (values) => {
     try {
-      if (values.password !== values.password2) return alert('las contraseñas no coinciden');
+      if (values.password !== values.password2) {
+        setIsError(true);
+      } else {
+        setIsError(false);
+      }
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         values.email,
         values.password,
       );
       const { user } = userCredential;
-      const infoUser = {
-        displayName: values.name,
-        email: values.email,
-        phoneNumber: null,
-        photoURL: 'https://cdn.discordapp.com/attachments/1040409257620799541/1047986728771801129/unknown.png',
-        isStaff: 'false',
-      };
-      const data = await addDoc(collection(db, 'users'), infoUser);
       console.log(user);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +114,9 @@ const RegisterUser = () => {
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
-            <Text style={styles.errorMsg}>No olvides colocar tu contraseña!</Text>
+            <Text style={styles.errorMsg}>
+              No olvides colocar tu contraseña!
+            </Text>
           )}
           {errors.password?.type === 'minLength' && (
             <Text style={styles.errorMsg}>Contraseña minimo 8 caracteres</Text>
@@ -143,6 +141,9 @@ const RegisterUser = () => {
             name="password2"
             defaultValue={defaultValues.password2}
           />
+          {isError && (
+            <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
+          )}
         </SafeAreaView>
         <Button
           title="Adherite"
