@@ -22,9 +22,9 @@ const HomeScreen = ({ navigation }) => {
         <View style={user?.value?.[0].isStaff ? styles.homeStaffHeader : styles.homeUserHeader}>
           <Image
             source={user?.value?.[0].isStaff === 'true' ? {
-              uri: 'https://cdn.discordapp.com/attachments/1040409257620799541/1048391510799949844/LogoStaff.png',
+              uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713046697812059/LogoStaff.png',
             } : {
-              uri: 'https://media.discordapp.net/attachments/1040409257620799541/1048049382953603132/Logo.png',
+              uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713045984776272/Logo.png',
             } }
             style={styles.homeImage}
             resizeMode={'contain'}
@@ -35,10 +35,11 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.benefitButton}>
           <Button
-            icon="gift"
-            mode="contained"
+            icon='gift'
+            mode='contained'
             onPress={handleBenefitNavigate}
-            buttonColor="#C83C45"
+            buttonColor='#C83C45'
+            style={styles.button}
           >
             Conocé todos tus beneficios
           </Button>

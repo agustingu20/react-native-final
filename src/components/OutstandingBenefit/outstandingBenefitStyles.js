@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   containerCard: {
     marginTop: -40,
+    marginBottom: 40,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: '#F4F6F7',
     width: '95%',
-    backgroundColor: '#F4F6F7',
+    backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
     height: 120,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    backgroundColor: '#F4F6F7',
+    backgroundColor: '#fff',
     marginBottom: 10,
   },
 });

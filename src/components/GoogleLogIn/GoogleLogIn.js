@@ -84,6 +84,7 @@ const GoogleLogIn = () => {
           type="light"
           style={styles.googleButton}
         />
+
       </View>
     </Button>
   );

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { ScrollView, View } from 'react-native';
+import {
+  ScrollView, View, Image, Text,
+} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
@@ -50,39 +52,44 @@ const LogInScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Image source={{ uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713538647724154/Logo1.png' }} style={styles.logo}/>
+        <Text style={styles.logInText}>Iniciar Sesión</Text>
+      <View style={styles.inputContainer}>
         <TextInput
           onChange={emailInput}
-          label="Email"
+          label='Email'
           style={styles.input}
-          underlineColor="#fff"
-          activeUnderlineColor="#C83C45"
+          underlineColor='#fff'
+          activeUnderlineColor='#C83C45'
         />
         <TextInput
           onChange={passInput}
-          label="Contraseña"
+          label='Contraseña'
           style={styles.input}
           secureTextEntry={true}
-          underlineColor="#fff"
-          activeUnderlineColor="#C83C45"
+          underlineColor='#fff'
+          activeUnderlineColor='#C83C45'
         />
       </View>
-      <Button mode="Text" textColor="#C83C45">
+
+      <Button mode='Text' textColor='#C83C45'>
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
         <Button
-          mode="contained"
+          mode='contained'
           onPress={loginAuthWithEmailAndPassword}
           style={styles.button}
         >
           Iniciar sesión
         </Button>
       </View>
-      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
+      <Button mode='Text' textColor='#C83C45' onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!
       </Button>
       <View>
         <GoogleLogIn />
+      </View>
       </View>
     </ScrollView>
   );

@@ -30,4 +30,11 @@ export const styles = StyleSheet.create({
     marginBottom: 50,
     padding: 8,
   },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#C83C45',
+    padding: 7,
+    marginHorizontal: 60,
+    marginVertical: 5,
+  },
 });

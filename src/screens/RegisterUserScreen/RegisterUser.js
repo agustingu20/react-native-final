@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Button, SafeAreaView, Text, TextInput, View,
+  ScrollView, Text, View, Image,
 } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { useForm, Controller } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { styles } from './RegisterUserStyles';
@@ -35,32 +36,34 @@ const RegisterUser = () => {
         values.password,
       );
       const { user } = userCredential;
-      console.log(user);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   return (
-    <View style={styles.containerR}>
-      <Text style={styles.title}>Ingresa tus Datos</Text>
-      <View style={styles.containerInputs}>
-        <SafeAreaView>
+    <ScrollView>
+    <View style={styles.container}>
+      <Image source={{ uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713538647724154/Logo1.png' }} style={styles.logo}/>
+      <Text style={styles.registerText}>Ingresa tus datos</Text>
+      <View>
+        <View style={styles.inputContainer}>
           <Controller
             control={control}
             rules={{ required: true, maxLength: 25 }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <>
-                <Text>Nombre</Text>
                 <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
                   onChangeText={onChange}
+                  style={styles.input}
                   value={value}
+                  label='Nombre'
+                  underlineColor='#fff'
+                  activeUnderlineColor='#C83C45'
                 />
               </>
             )}
-            name="name"
+            name='name'
             defaultValue={defaultValues.name}
           />
           {errors.name?.type === 'required' && (
@@ -75,18 +78,19 @@ const RegisterUser = () => {
               required: true,
               pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <>
-                <Text>Email</Text>
                 <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
                   onChangeText={onChange}
+                  style={styles.input}
                   value={value}
+                  label='Email'
+                  underlineColor='#fff'
+                  activeUnderlineColor='#C83C45'
                 />
               </>
             )}
-            name="email"
+            name='email'
             defaultValue={defaultValues.email}
           />
           {errors.email?.type === 'pattern' && (
@@ -98,25 +102,24 @@ const RegisterUser = () => {
           <Controller
             control={control}
             rules={{ required: true, maxLength: 25, minLength: 8 }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <>
-                <Text>Contraseña</Text>
                 <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
                   onChangeText={onChange}
+                  style={styles.input}
                   value={value}
+                  label='Contraseña'
+                  underlineColor='#fff'
+                  activeUnderlineColor='#C83C45'
                   secureTextEntry={true}
                 />
               </>
             )}
-            name="password"
+            name='password'
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
-            <Text style={styles.errorMsg}>
-              No olvides colocar tu contraseña!
-            </Text>
+            <Text style={styles.errorMsg}> No olvides colocar tu contraseña! </Text>
           )}
           {errors.password?.type === 'minLength' && (
             <Text style={styles.errorMsg}>Contraseña minimo 8 caracteres</Text>
@@ -126,38 +129,41 @@ const RegisterUser = () => {
           )}
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <>
-                <Text>Repetir Contraseña</Text>
                 <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
                   onChangeText={onChange}
+                  style={styles.input}
                   value={value}
+                  label='Repetir Contraseña'
+                  underlineColor='#fff'
+                  activeUnderlineColor='#C83C45'
                   secureTextEntry={true}
                 />
               </>
             )}
-            name="password2"
+            name='password2'
             defaultValue={defaultValues.password2}
           />
           {isError && (
             <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
           )}
-        </SafeAreaView>
+        </View>
         <Button
-          title="Adherite"
-          style={styles.buttonE}
-          onPress={handleSubmit(submit)}
-        />
+        mode='contained'
+        onPress={handleSubmit(submit)}
+        style={styles.button}>
+         Adherite
+        </Button>
       </View>
-      <View style={styles.divSesion}>
-        <Text style={styles.sesion}>
-          ¿Ya sos parte del club?
-          <Text style={styles.initSesion}>¡iniciar sesión!</Text>
-        </Text>
-      </View>
+      <Button
+      mode='Text'
+      textColor='#C83C45'
+      style={styles.buttonText}>
+      Ya soy miembro! Quiero iniciar sesión!
+      </Button>
     </View>
+    </ScrollView>
   );
 };
 

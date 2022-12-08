@@ -26,9 +26,10 @@ const BenefitsCard = ({ benefit, navigation }) => {
         <Title style={styles.titleCard}>{benefit.title}</Title>
         <Paragraph style={styles.textCard}>Válido: {benefit.days}</Paragraph>
         <Button
-          mode="contained"
-          buttonColor="#C83C45"
+          mode='contained'
+          buttonColor='#C83C45'
           onPress={onPressSelectedBenefit}
+          style={styles.button}
         >
           Lo quiero!
         </Button>
