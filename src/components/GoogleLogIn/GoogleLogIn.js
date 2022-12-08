@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import {
   GoogleAuthProvider,
@@ -31,7 +31,7 @@ const GoogleLogIn = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const { user } = result;
-        const infoUser = [
+        const firstRegistUser = [
           {
             displayName: user.displayName,
             email: user.email,
@@ -40,9 +40,32 @@ const GoogleLogIn = () => {
             isStaff: 'false',
           },
         ];
-        dispatch(setUser(infoUser));
-        dispatch(setToken(token));
-        const data = await addDoc(collection(db, 'users'), infoUser[0]);
+        const { docs } = await getDocs(collection(db, 'users'));
+        const userCollectionInfo = docs
+          .filter((usuario) => usuario.data().email === user.email)
+          .map((usuario) => {
+            return usuario.data();
+          });
+        const loginUserInfo = [
+          {
+            displayName: userCollectionInfo?.[0]?.displayName,
+            email: userCollectionInfo?.[0]?.email,
+            phoneNumber: userCollectionInfo?.[0]?.phoneNumber,
+            photoURL: userCollectionInfo?.[0]?.photoURL,
+            isStaff: userCollectionInfo?.[0]?.isStaff,
+          },
+        ];
+        if (userCollectionInfo.length === 0 || user.email !== userCollectionInfo[0].email) {
+          const data = await addDoc(
+            collection(db, 'users'),
+            firstRegistUser[0],
+          );
+          dispatch(setUser(firstRegistUser));
+          dispatch(setToken(token));
+        } else {
+          dispatch(setUser(loginUserInfo));
+          dispatch(setToken(token));
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -56,7 +79,11 @@ const GoogleLogIn = () => {
   return (
     <Button onPress={googleAuth}>
       <View style={styles.googleButtonContainer}>
-        <GoogleButton label='Iniciar Sesión con Google' type="light" style={styles.googleButton} />
+        <GoogleButton
+          label="Iniciar Sesión con Google"
+          type="light"
+          style={styles.googleButton}
+        />
       </View>
     </Button>
   );
