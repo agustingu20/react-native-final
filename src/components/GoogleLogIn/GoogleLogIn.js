@@ -48,11 +48,11 @@ const GoogleLogIn = () => {
           });
         const loginUserInfo = [
           {
-            displayName: userCollectionInfo[0].displayName,
-            email: userCollectionInfo[0].email,
-            phoneNumber: userCollectionInfo[0].phoneNumber,
-            photoURL: userCollectionInfo[0].photoURL,
-            isStaff: userCollectionInfo[0].isStaff,
+            displayName: userCollectionInfo?.[0]?.displayName,
+            email: userCollectionInfo?.[0]?.email,
+            phoneNumber: userCollectionInfo?.[0]?.phoneNumber,
+            photoURL: userCollectionInfo?.[0]?.photoURL,
+            isStaff: userCollectionInfo?.[0]?.isStaff,
           },
         ];
         if (userCollectionInfo.length === 0 || user.email !== userCollectionInfo[0].email) {
@@ -60,8 +60,9 @@ const GoogleLogIn = () => {
             collection(db, 'users'),
             firstRegistUser[0],
           );
-        }
-        if (user.email === userCollectionInfo[0].email) {
+          dispatch(setUser(firstRegistUser));
+          dispatch(setToken(token));
+        } else {
           dispatch(setUser(loginUserInfo));
           dispatch(setToken(token));
         }
