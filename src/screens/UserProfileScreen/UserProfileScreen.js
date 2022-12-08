@@ -33,8 +33,8 @@ const UserProfileScreen = ({ navigation }) => {
         </Text>
       )}
       <Button
-          mode="contained"
-          buttonColor="#C83C45"
+          mode='contained'
+          buttonColor='#C83C45'
           style={styles.closeSessionButton}
           onPress={closeSession}
         >

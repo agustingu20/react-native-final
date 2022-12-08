@@ -35,10 +35,10 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.benefitButton}>
           <Button
-            icon="gift"
-            mode="contained"
+            icon='gift'
+            mode='contained'
             onPress={handleBenefitNavigate}
-            buttonColor="#C83C45"
+            buttonColor='#C83C45'
             style={styles.button}
           >
             Conocé todos tus beneficios

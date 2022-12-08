@@ -57,34 +57,34 @@ const LogInScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           onChange={emailInput}
-          label="Email"
+          label='Email'
           style={styles.input}
-          underlineColor="#fff"
-          activeUnderlineColor="#C83C45"
+          underlineColor='#fff'
+          activeUnderlineColor='#C83C45'
         />
         <TextInput
           onChange={passInput}
-          label="Contraseña"
+          label='Contraseña'
           style={styles.input}
           secureTextEntry={true}
-          underlineColor="#fff"
-          activeUnderlineColor="#C83C45"
+          underlineColor='#fff'
+          activeUnderlineColor='#C83C45'
         />
       </View>
 
-      <Button mode="Text" textColor="#C83C45">
+      <Button mode='Text' textColor='#C83C45'>
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
         <Button
-          mode="contained"
+          mode='contained'
           onPress={loginAuthWithEmailAndPassword}
           style={styles.button}
         >
           Iniciar sesión
         </Button>
       </View>
-      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
+      <Button mode='Text' textColor='#C83C45' onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!
       </Button>
       <View>
