@@ -16,7 +16,7 @@ const StackComponent = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name='Benefits'
+        name='BenefitsList'
         component={BenefitsScreen}
         options={{
           headerShown: false,
