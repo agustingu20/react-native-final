@@ -34,7 +34,6 @@ const LogInScreen = ({ navigation }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const { user } = userCredential;
-        console.log(user);
         const userRegisterInfo = [{
           displayName: 'usuario',
           email: user.email,
