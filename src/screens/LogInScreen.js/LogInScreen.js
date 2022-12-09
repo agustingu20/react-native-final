@@ -34,6 +34,7 @@ const LogInScreen = ({ navigation }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const { user } = userCredential;
+        console.log(user);
         dispatch(setToken(user.accessToken));
         const { docs } = await getDocs(collection(db, 'users'));
         const userData = docs
@@ -58,6 +59,7 @@ const LogInScreen = ({ navigation }) => {
         <TextInput
           onChange={emailInput}
           label='Email'
+          value={email}
           style={styles.input}
           underlineColor='#fff'
           activeUnderlineColor='#C83C45'
@@ -65,6 +67,7 @@ const LogInScreen = ({ navigation }) => {
         <TextInput
           onChange={passInput}
           label='Contraseña'
+          value={password}
           style={styles.input}
           secureTextEntry={true}
           underlineColor='#fff'
