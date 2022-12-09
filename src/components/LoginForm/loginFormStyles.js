@@ -38,4 +38,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 60,
     marginVertical: 5,
   },
+  errorMsg: {
+    color: '#C83C45',
+  },
 });

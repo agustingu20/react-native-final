@@ -46,7 +46,7 @@ const SelectedBenefitScreen = ({ navigation }) => {
               mode='contained'
               buttonColor='#C83C45'
               style={styles.button}
-              onPress={() => navigation.navigate('Benefits')}
+              onPress={() => navigation.navigate('BenefitsList')}
             >
               Volver a mis beneficios
             </Button>

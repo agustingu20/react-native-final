@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -56,7 +56,7 @@ const GoogleLogIn = () => {
           },
         ];
         if (userCollectionInfo.length === 0 || user.email !== userCollectionInfo[0].email) {
-          const data = await addDoc(
+          await addDoc(
             collection(db, 'users'),
             firstRegistUser[0],
           );
