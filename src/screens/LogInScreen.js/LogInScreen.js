@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import {
   ScrollView, View, Image, Text,
@@ -35,6 +35,13 @@ const LogInScreen = ({ navigation }) => {
       .then(async (userCredential) => {
         const { user } = userCredential;
         console.log(user);
+        const userRegisterInfo = [{
+          displayName: 'usuario',
+          email: user.email,
+          photoURL: 'https://cdn.discordapp.com/attachments/1040409257620799541/1049713538647724154/Logo1.png',
+          phoneNumber: user.phoneNumber,
+          isStaff: 'false',
+        }];
         dispatch(setToken(user.accessToken));
         const { docs } = await getDocs(collection(db, 'users'));
         const userData = docs
@@ -42,8 +49,14 @@ const LogInScreen = ({ navigation }) => {
           .map((usuario) => {
             return { ...usuario.data() };
           });
-        dispatch(setUser(userData));
-        navigation.navigate('Home');
+        if (user.email && userData.length === 0) {
+          const data = await addDoc(collection(db, 'users'), userRegisterInfo[0]);
+          dispatch(setUser(userRegisterInfo));
+          navigation.navigate('Home');
+        } else {
+          dispatch(setUser(userData));
+          navigation.navigate('Home');
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -53,46 +66,51 @@ const LogInScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image source={{ uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713538647724154/Logo1.png' }} style={styles.logo}/>
+        <Image
+          source={{
+            uri: 'https://media.discordapp.net/attachments/1040409257620799541/1049713538647724154/Logo1.png',
+          }}
+          style={styles.logo}
+        />
         <Text style={styles.logInText}>Iniciar Sesión</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          onChange={emailInput}
-          label='Email'
-          value={email}
-          style={styles.input}
-          underlineColor='#fff'
-          activeUnderlineColor='#C83C45'
-        />
-        <TextInput
-          onChange={passInput}
-          label='Contraseña'
-          value={password}
-          style={styles.input}
-          secureTextEntry={true}
-          underlineColor='#fff'
-          activeUnderlineColor='#C83C45'
-        />
-      </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            onChange={emailInput}
+            label="Email"
+            value={email}
+            style={styles.input}
+            underlineColor="#fff"
+            activeUnderlineColor="#C83C45"
+          />
+          <TextInput
+            onChange={passInput}
+            label="Contraseña"
+            value={password}
+            style={styles.input}
+            secureTextEntry={true}
+            underlineColor="#fff"
+            activeUnderlineColor="#C83C45"
+          />
+        </View>
 
-      <Button mode='Text' textColor='#C83C45'>
-        Olvidaste tu contraseña? Toca aquí!
-      </Button>
-      <View>
-        <Button
-          mode='contained'
-          onPress={loginAuthWithEmailAndPassword}
-          style={styles.button}
-        >
-          Iniciar sesión
+        <Button mode="Text" textColor="#C83C45">
+          Olvidaste tu contraseña? Toca aquí!
         </Button>
-      </View>
-      <Button mode='Text' textColor='#C83C45' onPress={handleBenefitNavigate}>
-        No tienes cuenta? Registrate!
-      </Button>
-      <View>
-        <GoogleLogIn />
-      </View>
+        <View>
+          <Button
+            mode="contained"
+            onPress={loginAuthWithEmailAndPassword}
+            style={styles.button}
+          >
+            Iniciar sesión
+          </Button>
+        </View>
+        <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
+          No tienes cuenta? Registrate!
+        </Button>
+        <View>
+          <GoogleLogIn />
+        </View>
       </View>
     </ScrollView>
   );
