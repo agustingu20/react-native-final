@@ -50,7 +50,7 @@ const LogInScreen = ({ navigation }) => {
             return { ...usuario.data() };
           });
         if (user.email && userData.length === 0) {
-          const data = await addDoc(collection(db, 'users'), userRegisterInfo[0]);
+          await addDoc(collection(db, 'users'), userRegisterInfo[0]);
           dispatch(setUser(userRegisterInfo));
           navigation.navigate('Home');
         } else {

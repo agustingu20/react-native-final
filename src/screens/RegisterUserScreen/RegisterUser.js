@@ -43,7 +43,7 @@ const RegisterUser = ({ navigation }) => {
             isStaff: 'false',
           },
         ];
-        const data = await addDoc(collection(db, 'users'), userRegisterInfo[0]);
+        await addDoc(collection(db, 'users'), userRegisterInfo[0]);
         navigation.navigate('LogIn');
       }
     } catch (error) {
