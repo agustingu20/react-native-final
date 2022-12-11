@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import app, { db } from '../../../firebase';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
-
 
 const RegisterUser = ({ navigation }) => {
   const [isError, setIsError] = useState(false);
@@ -24,8 +23,10 @@ const RegisterUser = ({ navigation }) => {
   };
 
   const registerAlert = () => {
-    console.log('usuario creado');
     navigation.navigate('LogIn');
+    return (
+      window.alert('Usuario creado con éxito!')
+    );
   };
 
   const submit = async (values) => {
