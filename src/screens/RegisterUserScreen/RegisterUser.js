@@ -6,6 +6,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import app, { db } from '../../../firebase';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
+
 const RegisterUser = ({ navigation }) => {
   const [isError, setIsError] = useState(false);
 
@@ -21,6 +22,12 @@ const RegisterUser = ({ navigation }) => {
     password: '',
     password2: '',
   };
+
+  const registerAlert = () => {
+    console.log('usuario creado');
+    navigation.navigate('LogIn');
+  };
+
   const submit = async (values) => {
     try {
       if (values.password !== values.password2) {
@@ -44,7 +51,7 @@ const RegisterUser = ({ navigation }) => {
           },
         ];
         await addDoc(collection(db, 'users'), userRegisterInfo[0]);
-        navigation.navigate('LogIn');
+        registerAlert();
       }
     } catch (error) {
       console.error(error);
