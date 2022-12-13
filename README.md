@@ -1,4 +1,4 @@
-# Bienvenidos a Rolling Code Benefits <b>< ></b>
+# Bienvenidos a Rolling Code Benefits
 
 ## Rolling Code Benefits es una aplicación realizada como trabajo final del cursado de React Avanzado de Rolling Code School
 
