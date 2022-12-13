@@ -34,13 +34,13 @@ const LoginForm = ({
                 onChangeText={onChange}
                 style={styles.input}
                 value={value}
-                label="Email"
-                underlineColor="#fff"
-                activeUnderlineColor="#C83C45"
+                label='Email'
+                underlineColor='#fff'
+                activeUnderlineColor='#C83C45'
               />
             </>
           )}
-          name="email"
+          name='email'
           defaultValue={defaultValues.email}
         />
         {errors.email?.type === 'pattern' && (
@@ -58,14 +58,14 @@ const LoginForm = ({
                 onChangeText={onChange}
                 style={styles.input}
                 value={value}
-                label="Contraseña"
-                underlineColor="#fff"
-                activeUnderlineColor="#C83C45"
+                label='Contraseña'
+                underlineColor='#fff'
+                activeUnderlineColor='#C83C45'
                 secureTextEntry={true}
               />
             </>
           )}
-          name="password"
+          name='password'
           defaultValue={defaultValues.password}
         />
         {errors.password?.type === 'required' && (
@@ -78,19 +78,19 @@ const LoginForm = ({
           <Text style={styles.errorMsg}>Contraseña maximo 25 caracteres</Text>
         )}
       </View>
-      <Button mode="Text" textColor="#C83C45">
+      <Button mode='Text' textColor='#C83C45'>
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
         <Button
-          mode="contained"
+          mode='contained'
           style={styles.button}
           onPress={handleSubmit(submit)}
         >
           Iniciar sesión
         </Button>
       </View>
-      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
+      <Button mode='Text' textColor='#C83C45' onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!
       </Button>
     </View>

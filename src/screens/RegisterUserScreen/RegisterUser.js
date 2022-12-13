@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
@@ -21,6 +21,14 @@ const RegisterUser = ({ navigation }) => {
     password: '',
     password2: '',
   };
+
+  const registerAlert = () => {
+    navigation.navigate('LogIn');
+    return (
+      window.alert('Usuario creado con éxito!')
+    );
+  };
+
   const submit = async (values) => {
     try {
       if (values.password !== values.password2) {
@@ -44,7 +52,7 @@ const RegisterUser = ({ navigation }) => {
           },
         ];
         await addDoc(collection(db, 'users'), userRegisterInfo[0]);
-        navigation.navigate('LogIn');
+        registerAlert();
       }
     } catch (error) {
       console.error(error);
