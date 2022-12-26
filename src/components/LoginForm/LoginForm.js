@@ -67,6 +67,8 @@ const LoginForm = ({
                 right={
                   <TextInput.Icon
                   icon={isVisible ? 'eye' : 'eye-off'}
+                  iconColor='#C83C45'
+                  size='medium'
                   onPress={() => setIsVisible(!isVisible)}
                   />
                 }
