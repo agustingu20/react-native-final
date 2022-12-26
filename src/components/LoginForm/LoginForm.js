@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { Image, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
@@ -12,6 +13,7 @@ const LoginForm = ({
   handleSubmit,
   submit,
 }) => {
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <View style={styles.container}>
       <Image
@@ -61,7 +63,13 @@ const LoginForm = ({
                 label='Contraseña'
                 underlineColor='#fff'
                 activeUnderlineColor='#C83C45'
-                secureTextEntry={true}
+                secureTextEntry={isVisible}
+                right={
+                  <TextInput.Icon
+                  name={isVisible ? 'eye' : 'eye-off'}
+                  onPress={() => setIsVisible(!isVisible)}
+                  />
+                }
               />
             </>
           )}

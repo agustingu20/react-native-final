@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { Image, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
@@ -12,6 +12,7 @@ const RegisterForm = ({
   handleSubmit,
   submit,
 }) => {
+  const [isVisible, setIsVisible] = useState(true);
   return (
     <View style={styles.container}>
       <Image
@@ -59,6 +60,7 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
+                  type='email'
                   label='Email'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
@@ -86,7 +88,12 @@ const RegisterForm = ({
                   label='Contraseña'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
-                  secureTextEntry={true}
+                  secureTextEntry={isVisible}
+                  right={
+                    <TextInput.Icon
+                    name={isVisible ? 'eye' : 'eye-off'}
+                    onPress={() => setIsVisible(!isVisible)} />
+                  }
                 />
               </>
             )}
