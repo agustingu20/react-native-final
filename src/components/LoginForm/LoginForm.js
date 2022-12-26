@@ -66,7 +66,7 @@ const LoginForm = ({
                 secureTextEntry={isVisible}
                 right={
                   <TextInput.Icon
-                  name={isVisible ? 'eye' : 'eye-off'}
+                  icon={isVisible ? 'eye' : 'eye-off'}
                   onPress={() => setIsVisible(!isVisible)}
                   />
                 }

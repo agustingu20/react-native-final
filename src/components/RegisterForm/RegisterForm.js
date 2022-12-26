@@ -91,7 +91,7 @@ const RegisterForm = ({
                   secureTextEntry={isVisible}
                   right={
                     <TextInput.Icon
-                    name={isVisible ? 'eye' : 'eye-off'}
+                    icon={isVisible ? 'eye' : 'eye-off'}
                     onPress={() => setIsVisible(!isVisible)} />
                   }
                 />
@@ -123,7 +123,13 @@ const RegisterForm = ({
                   label='Repetir Contraseña'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
-                  secureTextEntry={true}
+                  secureTextEntry={isVisible}
+                  right={
+                    <TextInput.Icon
+                    icon={isVisible ? 'eye' : 'eye-off'}
+                    onPress={() => setIsVisible(!isVisible)}
+                    />
+                  }
                 />
               </>
             )}
