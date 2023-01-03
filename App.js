@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useState } from 'react';
 import { store } from './src/store/store';
 import { HomeScreen } from './src/screens/HomeScreen';
 import BenefitsScreen from './src/screens/BenefitsScreen/BenefitsScreen';
@@ -10,6 +11,7 @@ import SelectedBenefitScreen from './src/screens/SelectedBenefitScreen/SelectedB
 import UserProfileScreen from './src/screens/UserProfileScreen/UserProfileScreen';
 import LogInScreen from './src/screens/LogInScreen.js/LogInScreen';
 import RegisterUser from './src/screens/RegisterUserScreen/RegisterUser';
+import ResetPswScreen from './src/screens/ResetPswScreen/ResetPswScreen';
 
 const StackComponent = () => {
   const Stack = createNativeStackNavigator();
@@ -28,6 +30,28 @@ const StackComponent = () => {
         options={{
           headerShown: false,
         }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const StackScreenLog = () => {
+  const Stack = createNativeStackNavigator();
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+      name='logIn'
+      options={{
+        headerShown: false,
+      }}
+      component={LogInScreen}
+      />
+      <Stack.Screen
+      name='Cambiar Contraseña'
+      options={{
+        headerShown: false,
+      }}
+      component={ResetPswScreen}
       />
     </Stack.Navigator>
   );
@@ -66,7 +90,7 @@ export function App() {
 
         {!token.value && <Tab.Screen
           name='LogIn'
-          component={LogInScreen}
+          component={StackScreenLog}
           options={{
             headerShown: false,
             tabBarActiveTintColor: '#C83C45',
@@ -109,6 +133,16 @@ export function App() {
             }}
           />
         )}
+         {/* <Tab.Screen
+          name='TabScreenResetPassword'
+          component={StackScreenResetPsw}
+          options={{
+            tabBarShowLabel: false,
+            headerShown: false,
+            tabBarVisible: false,
+          }}
+          /> */}
+
       </Tab.Navigator>
     </NavigationContainer>
   );
