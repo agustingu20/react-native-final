@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { Image, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
@@ -12,6 +12,8 @@ const RegisterForm = ({
   handleSubmit,
   submit,
 }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isRepeatVisible, setIsRepeatVisible] = useState(true);
   return (
     <View style={styles.container}>
       <Image
@@ -59,6 +61,7 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
+                  type='email'
                   label='Email'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
@@ -86,7 +89,14 @@ const RegisterForm = ({
                   label='Contraseña'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
-                  secureTextEntry={true}
+                  secureTextEntry={isVisible}
+                  right={
+                    <TextInput.Icon
+                    icon={isVisible ? 'eye' : 'eye-off'}
+                    iconColor='#C83C45'
+                    size='medium'
+                    onPress={() => setIsVisible(!isVisible)} />
+                  }
                 />
               </>
             )}
@@ -116,7 +126,15 @@ const RegisterForm = ({
                   label='Repetir Contraseña'
                   underlineColor='#fff'
                   activeUnderlineColor='#C83C45'
-                  secureTextEntry={true}
+                  secureTextEntry={isRepeatVisible}
+                  right={
+                    <TextInput.Icon
+                    icon={isRepeatVisible ? 'eye' : 'eye-off'}
+                    iconColor='#C83C45'
+                    size='medium'
+                    onPress={() => setIsRepeatVisible(!isRepeatVisible)}
+                    />
+                  }
                 />
               </>
             )}
