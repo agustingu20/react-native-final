@@ -80,8 +80,8 @@ const GoogleLogIn = () => {
     <Button onPress={googleAuth}>
       <View style={styles.googleButtonContainer}>
         <GoogleButton
-          label="Iniciar Sesión con Google"
-          type="light"
+          label='Iniciar Sesión con Google'
+          type='light'
           style={styles.googleButton}
         />
 

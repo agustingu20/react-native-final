@@ -21,6 +21,14 @@ const RegisterUser = ({ navigation }) => {
     password: '',
     password2: '',
   };
+
+  const registerAlert = () => {
+    navigation.navigate('LogIn');
+    return (
+      window.alert('Usuario creado con éxito!')
+    );
+  };
+
   const submit = async (values) => {
     try {
       if (values.password !== values.password2) {
@@ -44,7 +52,7 @@ const RegisterUser = ({ navigation }) => {
           },
         ];
         await addDoc(collection(db, 'users'), userRegisterInfo[0]);
-        navigation.navigate('LogIn');
+        registerAlert();
       }
     } catch (error) {
       console.error(error);

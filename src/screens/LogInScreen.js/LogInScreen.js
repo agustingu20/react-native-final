@@ -9,6 +9,7 @@ import { setUser } from '../../store/userSlice';
 import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
 import app, { db } from '../../../firebase';
 import { LoginForm } from '../../components/LoginForm';
+import { styles } from './logInScreenStyle';
 
 const LogInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const LogInScreen = ({ navigation }) => {
 
   return (
     <ScrollView>
+      <View style={styles.container}>
       <View>
         <LoginForm
           handleBenefitNavigate={handleBenefitNavigate}
@@ -76,6 +78,7 @@ const LogInScreen = ({ navigation }) => {
       </View>
       <View>
         <GoogleLogIn />
+      </View>
       </View>
     </ScrollView>
   );
