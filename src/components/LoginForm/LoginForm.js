@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { Image, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 import { styles } from './loginFormStyles';
 
 const LoginForm = ({
@@ -14,6 +15,10 @@ const LoginForm = ({
   submit,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const navigation = useNavigation();
+  const navigateScreenResetPsw = () => {
+    navigation.navigate('Cambiar Contraseña');
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -88,7 +93,7 @@ const LoginForm = ({
           <Text style={styles.errorMsg}>Contraseña maximo 25 caracteres</Text>
         )}
       </View>
-      <Button mode='Text' textColor='#C83C45'>
+      <Button mode="Text" textColor="#C83C45" onPress={navigateScreenResetPsw}>
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
