@@ -133,17 +133,7 @@ export function App() {
             }}
           />
         )}
-         {/* <Tab.Screen
-          name='TabScreenResetPassword'
-          component={StackScreenResetPsw}
-          options={{
-            tabBarShowLabel: false,
-            headerShown: false,
-            tabBarVisible: false,
-          }}
-          /> */}
-
-      </Tab.Navigator>
+        </Tab.Navigator>
     </NavigationContainer>
   );
 }
