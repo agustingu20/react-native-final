@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,8 @@ const LogInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const auth = getAuth(app);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -24,6 +26,7 @@ const LogInScreen = ({ navigation }) => {
     password: '',
   };
   const submit = async (values) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then(async (userCredential) => {
         const { user } = userCredential;
@@ -47,9 +50,11 @@ const LogInScreen = ({ navigation }) => {
         if (user.email && userData.length === 0) {
           await addDoc(collection(db, 'users'), userRegisterInfo[0]);
           dispatch(setUser(userRegisterInfo));
+          setIsLoading(false);
           navigation.navigate('Home');
         } else {
           dispatch(setUser(userData));
+          setIsLoading(false);
           navigation.navigate('Home');
         }
       })
@@ -78,6 +83,7 @@ const LogInScreen = ({ navigation }) => {
             control={control}
             errors={errors}
             navigateScreenResetPsw={navigateScreenResetPsw}
+            isLoading={isLoading}
           />
         </View>
       </View>

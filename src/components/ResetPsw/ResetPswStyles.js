@@ -23,9 +23,4 @@ export const styles = StyleSheet.create({
     padding: 7,
     marginVertical: 8,
   },
-  successMsg: {
-    color: 'green',
-    fontSize: 10,
-    marginBottom: 7,
-  },
 });

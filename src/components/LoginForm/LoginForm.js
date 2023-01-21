@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
-import { Image, Text, View } from 'react-native';
+import {
+  ActivityIndicator, Image, Text, View,
+} from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { styles } from './loginFormStyles';
 
@@ -12,6 +14,7 @@ const LoginForm = ({
   handleSubmit,
   submit,
   navigateScreenResetPsw,
+  isLoading,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -68,7 +71,7 @@ const LoginForm = ({
                 secureTextEntry={isVisible}
                 right={
                   <TextInput.Icon
-                    icon={isVisible ? 'eye' : 'eye-off'}
+                    icon={isVisible ? 'eye-off' : 'eye'}
                     iconColor="#C83C45"
                     onPress={() => setIsVisible(!isVisible)}
                   />
@@ -93,13 +96,17 @@ const LoginForm = ({
         Olvidaste tu contraseña? Toca aquí!
       </Button>
       <View>
-        <Button
-          mode="contained"
-          style={styles.button}
-          onPress={handleSubmit(submit)}
-        >
-          Iniciar sesión
-        </Button>
+        {isLoading ? (
+          <ActivityIndicator size="large" color="#C83C45" />
+        ) : (
+          <Button
+            mode="contained"
+            style={styles.button}
+            onPress={handleSubmit(submit)}
+          >
+            Iniciar sesión
+          </Button>
+        )}
       </View>
       <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!

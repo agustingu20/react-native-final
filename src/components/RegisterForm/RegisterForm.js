@@ -93,7 +93,7 @@ const RegisterForm = ({
                   secureTextEntry={isVisible}
                   right={
                     <TextInput.Icon
-                      icon={isVisible ? 'eye' : 'eye-off'}
+                      icon={isVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
                       onPress={() => setIsVisible(!isVisible)}
                     />
@@ -130,7 +130,7 @@ const RegisterForm = ({
                   secureTextEntry={isRepeatVisible}
                   right={
                     <TextInput.Icon
-                      icon={isRepeatVisible ? 'eye' : 'eye-off'}
+                      icon={isRepeatVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
                       onPress={() => setIsRepeatVisible(!isRepeatVisible)}
                     />
