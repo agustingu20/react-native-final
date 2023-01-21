@@ -2,10 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import ResetPsw from '../../components/ResetPsw/ResetPsw';
 
-const ResetPswScreen = () => {
+const ResetPswScreen = ({ navigation }) => {
+  const handleNavigationSubmit = () => {
+    navigation.navigate('LoginScreen');
+  };
+
   return (
     <View>
-      <ResetPsw />
+      <ResetPsw handleNavigationSubmit={handleNavigationSubmit} />
     </View>
   );
 };

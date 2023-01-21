@@ -1,49 +1,100 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import {
+  View, Text, Alert, ActivityIndicator,
+} from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { sendPasswordResetEmail, getAuth } from 'firebase/auth';
+import { Controller, useForm } from 'react-hook-form';
 import { styles } from './ResetPswStyles';
 import app from '../../../firebase';
 
-const ResetPsw = () => {
-  const [email, setEmail] = useState('');
-  const [sendMsg, setSendMsg] = useState(false);
-  const [buttonSend, setButtonSend] = useState(false);
+const ResetPsw = ({ handleNavigationSubmit }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const auth = getAuth(app);
-  const resetPsw = async () => {
-    try {
-      setButtonSend(true);
-      await sendPasswordResetEmail(auth, email);
-      setSendMsg(true);
-    } catch (error) {
-      console.log(error);
-    }
-    setTimeout(() => setSendMsg(false), 5000);
-    setButtonSend(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const defaultValues = {
+    email: '',
   };
+
+  const submit = async (values) => {
+    try {
+      setIsLoading(true);
+      await sendPasswordResetEmail(auth, values.email);
+      Alert.alert(
+        'Cambio de contraseña',
+        'Se envió un email a tu correo para el cambio de contraseña',
+        [
+          {
+            text: 'Aceptar',
+            onPress: () => {
+              setIsLoading(false);
+              handleNavigationSubmit();
+            },
+          },
+        ],
+      );
+    } catch (error) {
+      Alert.alert(
+        'Error',
+        'Email no encontrado',
+        [
+          {
+            text: 'Aceptar',
+            onPress: () => {
+              setIsLoading(false);
+            },
+          },
+        ],
+      );
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Cambiar Contraseña</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={(val) => setEmail(val)}
-        label="Email"
-        underlineColor="#fff"
-        activeUnderlineColor="#C83C45"
-        keyboardType="email-address"
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+          pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+        }}
+        render={({ field: { onChange, value } }) => (
+          <>
+            <TextInput
+              onChangeText={onChange}
+              style={styles.input}
+              value={value}
+              label="Email"
+              underlineColor="#fff"
+              activeUnderlineColor="#C83C45"
+              keyboardType="email-address"
+            />
+          </>
+        )}
+        name="email"
+        defaultValue={defaultValues.email}
       />
-      <Button
-        onPress={resetPsw}
-        style={styles.button}
-        mode="contained"
-        textColor="#fff"
-      >
-        {buttonSend ? 'enviando...' : 'Enviar'}
-      </Button>
-      {sendMsg && (
-        <Text style={styles.successMsg}>
-          hemos enviado un email a tu correo
-        </Text>
+      {errors.email?.type === 'pattern' && (
+        <Text style={styles.errorMsg}>Ingresa un mail válido</Text>
+      )}
+      {errors.email?.type === 'required' && (
+        <Text style={styles.errorMsg}>No olvides colocar tu email!</Text>
+      )}
+      {isLoading ? (
+        <ActivityIndicator size="large" color="#C83C45" />
+      ) : (
+        <Button
+          onPress={handleSubmit(submit)}
+          style={styles.button}
+          mode="contained"
+          textColor="#fff"
+        >
+          Enviar
+        </Button>
       )}
     </View>
   );
