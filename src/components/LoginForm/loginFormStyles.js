@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
   logInText: {
     fontSize: 30,
-    fontWeight: '600',
     color: '#C83C45',
     marginTop: 22,
     alignSelf: 'center',

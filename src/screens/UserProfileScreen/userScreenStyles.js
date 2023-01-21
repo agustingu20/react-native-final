@@ -17,14 +17,12 @@ export const styles = StyleSheet.create({
   },
   profileTitle: {
     fontSize: 24,
-    fontWeight: 700,
     marginTop: 20,
     marginStart: 20,
     color: '#C83C45',
   },
   profileText: {
     fontSize: 20,
-    fontWeight: 300,
     marginTop: 10,
     marginStart: 20,
   },

@@ -24,7 +24,7 @@ const ResetPsw = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Cambiar Contraseña</Text>
-      <TextInput onChangeText={(val) => setEmail(val)} label="Email" underlineColor="#fff" activeUnderlineColor="#C83C45"/>
+      <TextInput style={styles.input} onChangeText={(val) => setEmail(val)} label="Email" underlineColor="#fff" activeUnderlineColor="#C83C45"/>
       <Button onPress={resetPsw} style={styles.button} mode="contained" textColor="#fff">{buttonSend ? 'enviando...' : 'Enviar'}</Button>
       { sendMsg && <Text style={styles.successMsg}>hemos enviado un email a tu correo</Text>}
     </View>

@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     paddingVertical: 50,
     marginTop: -45,
-    fontWeight: 900,
     marginBottom: 30,
   },
   benefitButton: {

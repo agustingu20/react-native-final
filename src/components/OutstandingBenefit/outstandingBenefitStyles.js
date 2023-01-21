@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
   },
   benefitText: {
     fontSize: 16,
-    fontWeight: 500,
     paddingLeft: 10,
     marginBottom: 10,
   },
