@@ -56,6 +56,7 @@ const ResetPsw = ({ handleNavigationSubmit }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Cambio de Contraseña</Text>
       <Controller
         control={control}
         rules={{
