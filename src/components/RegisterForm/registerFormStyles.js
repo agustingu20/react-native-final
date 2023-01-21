@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
   registerText: {
     fontSize: 30,
-    fontWeight: '600',
     color: '#C83C45',
     marginVertical: 22,
     alignSelf: 'center',

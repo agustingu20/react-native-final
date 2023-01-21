@@ -6,7 +6,6 @@ import { ScrollView, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
-import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
 import app, { db } from '../../../firebase';
 import { LoginForm } from '../../components/LoginForm';
 import { styles } from './logInScreenStyle';
@@ -66,19 +65,16 @@ const LogInScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-      <View>
-        <LoginForm
-          handleBenefitNavigate={handleBenefitNavigate}
-          submit={submit}
-          handleSubmit={handleSubmit}
-          defaultValues={defaultValues}
-          control={control}
-          errors={errors}
-        />
-      </View>
-      <View>
-        <GoogleLogIn />
-      </View>
+        <View>
+          <LoginForm
+            handleBenefitNavigate={handleBenefitNavigate}
+            submit={submit}
+            handleSubmit={handleSubmit}
+            defaultValues={defaultValues}
+            control={control}
+            errors={errors}
+          />
+        </View>
       </View>
     </ScrollView>
   );

@@ -37,6 +37,7 @@ const LoginForm = ({
                 label='Email'
                 underlineColor='#fff'
                 activeUnderlineColor='#C83C45'
+                keyboardType='email-address'
               />
             </>
           )}
