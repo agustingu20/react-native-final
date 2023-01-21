@@ -62,6 +62,10 @@ const LogInScreen = ({ navigation }) => {
     navigation.navigate('Register');
   };
 
+  const navigateScreenResetPsw = () => {
+    navigation.navigate('ChangePassword');
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -73,6 +77,7 @@ const LogInScreen = ({ navigation }) => {
             defaultValues={defaultValues}
             control={control}
             errors={errors}
+            navigateScreenResetPsw={navigateScreenResetPsw}
           />
         </View>
       </View>

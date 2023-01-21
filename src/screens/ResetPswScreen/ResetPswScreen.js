@@ -5,7 +5,7 @@ import ResetPsw from '../../components/ResetPsw/ResetPsw';
 const ResetPswScreen = () => {
   return (
     <View>
-      <ResetPsw/>
+      <ResetPsw />
     </View>
   );
 };

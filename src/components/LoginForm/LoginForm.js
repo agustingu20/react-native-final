@@ -1,9 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { Image, Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
 import { styles } from './loginFormStyles';
 
 const LoginForm = ({
@@ -13,12 +11,10 @@ const LoginForm = ({
   handleBenefitNavigate,
   handleSubmit,
   submit,
+  navigateScreenResetPsw,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const navigation = useNavigation();
-  const navigateScreenResetPsw = () => {
-    navigation.navigate('Cambiar Contraseña');
-  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -41,14 +37,14 @@ const LoginForm = ({
                 onChangeText={onChange}
                 style={styles.input}
                 value={value}
-                label='Email'
-                underlineColor='#fff'
-                activeUnderlineColor='#C83C45'
-                keyboardType='email-address'
+                label="Email"
+                underlineColor="#fff"
+                activeUnderlineColor="#C83C45"
+                keyboardType="email-address"
               />
             </>
           )}
-          name='email'
+          name="email"
           defaultValue={defaultValues.email}
         />
         {errors.email?.type === 'pattern' && (
@@ -66,22 +62,21 @@ const LoginForm = ({
                 onChangeText={onChange}
                 style={styles.input}
                 value={value}
-                label='Contraseña'
-                underlineColor='#fff'
-                activeUnderlineColor='#C83C45'
+                label="Contraseña"
+                underlineColor="#fff"
+                activeUnderlineColor="#C83C45"
                 secureTextEntry={isVisible}
                 right={
                   <TextInput.Icon
-                  icon={isVisible ? 'eye' : 'eye-off'}
-                  iconColor='#C83C45'
-                  size='medium'
-                  onPress={() => setIsVisible(!isVisible)}
+                    icon={isVisible ? 'eye' : 'eye-off'}
+                    iconColor="#C83C45"
+                    onPress={() => setIsVisible(!isVisible)}
                   />
                 }
               />
             </>
           )}
-          name='password'
+          name="password"
           defaultValue={defaultValues.password}
         />
         {errors.password?.type === 'required' && (
@@ -99,14 +94,14 @@ const LoginForm = ({
       </Button>
       <View>
         <Button
-          mode='contained'
+          mode="contained"
           style={styles.button}
           onPress={handleSubmit(submit)}
         >
           Iniciar sesión
         </Button>
       </View>
-      <Button mode='Text' textColor='#C83C45' onPress={handleBenefitNavigate}>
+      <Button mode="Text" textColor="#C83C45" onPress={handleBenefitNavigate}>
         No tienes cuenta? Registrate!
       </Button>
     </View>
