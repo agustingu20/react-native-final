@@ -31,14 +31,12 @@ export const styles = StyleSheet.create({
     borderRadius: 4,
     width: 300,
     fontSize: 22,
-    fontWeight: 700,
     color: '#172026',
     textAlign: 'center',
     marginBottom: 10,
   },
   textCard: {
     fontSize: 16,
-    fontWeight: 500,
     marginBottom: 20,
   },
   button: {

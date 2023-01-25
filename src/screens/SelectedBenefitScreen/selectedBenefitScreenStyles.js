@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
   benefitTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
     color: '#C83C45',
   },
   lineBreaker: {
@@ -36,13 +35,11 @@ export const styles = StyleSheet.create({
   },
   codeTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,
   },
   code: {
     fontSize: 28,
-    fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 50,
     letterSpacing: 10,

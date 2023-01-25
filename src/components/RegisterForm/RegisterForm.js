@@ -34,13 +34,13 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
-                  label='Nombre'
-                  underlineColor='#fff'
-                  activeUnderlineColor='#C83C45'
+                  label="Nombre"
+                  underlineColor="#fff"
+                  activeUnderlineColor="#C83C45"
                 />
               </>
             )}
-            name='name'
+            name="name"
             defaultValue={defaultValues.name}
           />
           {errors.name?.type === 'required' && (
@@ -61,14 +61,15 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
-                  type='email'
-                  label='Email'
-                  underlineColor='#fff'
-                  activeUnderlineColor='#C83C45'
+                  type="email"
+                  label="Email"
+                  underlineColor="#fff"
+                  activeUnderlineColor="#C83C45"
+                  keyboardType="email-address"
                 />
               </>
             )}
-            name='email'
+            name="email"
             defaultValue={defaultValues.email}
           />
           {errors.email?.type === 'pattern' && (
@@ -86,21 +87,21 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
-                  label='Contraseña'
-                  underlineColor='#fff'
-                  activeUnderlineColor='#C83C45'
+                  label="Contraseña"
+                  underlineColor="#fff"
+                  activeUnderlineColor="#C83C45"
                   secureTextEntry={isVisible}
                   right={
                     <TextInput.Icon
-                    icon={isVisible ? 'eye' : 'eye-off'}
-                    iconColor='#C83C45'
-                    size='medium'
-                    onPress={() => setIsVisible(!isVisible)} />
+                      icon={isVisible ? 'eye-off' : 'eye'}
+                      iconColor="#C83C45"
+                      onPress={() => setIsVisible(!isVisible)}
+                    />
                   }
                 />
               </>
             )}
-            name='password'
+            name="password"
             defaultValue={defaultValues.password}
           />
           {errors.password?.type === 'required' && (
@@ -123,22 +124,21 @@ const RegisterForm = ({
                   onChangeText={onChange}
                   style={styles.input}
                   value={value}
-                  label='Repetir Contraseña'
-                  underlineColor='#fff'
-                  activeUnderlineColor='#C83C45'
+                  label="Repetir Contraseña"
+                  underlineColor="#fff"
+                  activeUnderlineColor="#C83C45"
                   secureTextEntry={isRepeatVisible}
                   right={
                     <TextInput.Icon
-                    icon={isRepeatVisible ? 'eye' : 'eye-off'}
-                    iconColor='#C83C45'
-                    size='medium'
-                    onPress={() => setIsRepeatVisible(!isRepeatVisible)}
+                      icon={isRepeatVisible ? 'eye-off' : 'eye'}
+                      iconColor="#C83C45"
+                      onPress={() => setIsRepeatVisible(!isRepeatVisible)}
                     />
                   }
                 />
               </>
             )}
-            name='password2'
+            name="password2"
             defaultValue={defaultValues.password2}
           />
           {isError && (
@@ -146,14 +146,14 @@ const RegisterForm = ({
           )}
         </View>
         <Button
-          mode='contained'
+          mode="contained"
           onPress={handleSubmit(submit)}
           style={styles.button}
         >
           Adherite
         </Button>
       </View>
-      <Button mode='Text' textColor='#C83C45' style={styles.buttonText}>
+      <Button mode="Text" textColor="#C83C45" style={styles.buttonText}>
         Ya soy miembro! Quiero iniciar sesión!
       </Button>
     </View>
