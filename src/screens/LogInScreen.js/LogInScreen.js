@@ -6,7 +6,7 @@ import { ScrollView, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
-import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
+// import GoogleLogIn from '../../components/GoogleLogIn/GoogleLogIn';
 import app, { db } from '../../../firebase';
 import { LoginForm } from '../../components/LoginForm';
 import { styles } from './logInScreenStyle';
@@ -77,7 +77,7 @@ const LogInScreen = ({ navigation }) => {
         />
       </View>
       <View>
-        <GoogleLogIn />
+        {/* <GoogleLogIn /> */}
       </View>
       </View>
     </ScrollView>
