@@ -14,6 +14,7 @@ const RegisterForm = ({
   handleSubmit,
   submit,
   isLoading,
+  handleNavigateLogin,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isRepeatVisible, setIsRepeatVisible] = useState(true);
@@ -179,7 +180,7 @@ const RegisterForm = ({
           </Button>
         )}
       </View>
-      <Button mode="Text" textColor="#C83C45" style={styles.buttonText}>
+      <Button mode="Text" textColor="#C83C45" style={styles.buttonText} onPress={handleNavigateLogin}>
         Ya soy miembro! Quiero iniciar sesión!
       </Button>
     </View>

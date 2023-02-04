@@ -10,6 +10,10 @@ const RegisterUser = ({ navigation }) => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleNavigateLogin = () => {
+    navigation.navigate('LogIn');
+  };
+
   const {
     control,
     handleSubmit,
@@ -83,6 +87,7 @@ const RegisterUser = ({ navigation }) => {
         submit={submit}
         isError={isError}
         isLoading={isLoading}
+        handleNavigateLogin={handleNavigateLogin}
       />
     </ScrollView>
   );
