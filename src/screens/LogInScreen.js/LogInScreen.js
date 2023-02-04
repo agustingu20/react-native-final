@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { ScrollView, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { setToken } from '../../store/tokenSlice';
 import { setUser } from '../../store/userSlice';
@@ -59,7 +59,19 @@ const LogInScreen = ({ navigation }) => {
         }
       })
       .catch((error) => {
-        console.error(error);
+        Alert.alert(
+          'Ups! Hubo un error',
+          'Ingresaste una contraseña incorrecta.',
+          [
+            {
+              text: 'Aceptar',
+              onPress: () => {
+                setIsLoading(false);
+              },
+            },
+          ],
+        );
+        console.log(error);
       });
   };
 
