@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     paddingTop: 10,
     backgroundColor: '#fff',
     borderRadius: 20,
@@ -11,7 +10,7 @@ export const styles = StyleSheet.create({
   profileImage: {
     width: 250,
     height: 250,
-    borderRadius: '50%',
+    borderRadius: 150,
     marginBottom: 5,
     alignSelf: 'center',
   },

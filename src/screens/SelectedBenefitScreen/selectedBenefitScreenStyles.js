@@ -5,10 +5,11 @@ const { width, height } = Dimensions.get('screen');
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    marginTop: width / 3,
   },
   benefitImage: {
     width,
-    height: height / 2.5,
+    height: height / 5,
     backgroundColor: 'white',
   },
   textContainer: {
