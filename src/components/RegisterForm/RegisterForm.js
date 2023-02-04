@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
-import { Image, Text, View } from 'react-native';
+import {
+  ActivityIndicator, Image, Text, View,
+} from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { styles } from './registerFormStyles';
 
@@ -11,9 +13,30 @@ const RegisterForm = ({
   isError,
   handleSubmit,
   submit,
+  isLoading,
+  handleNavigateLogin,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isRepeatVisible, setIsRepeatVisible] = useState(true);
+
+  const mostrarContraseña = () => {
+    if (isVisible) {
+      setIsVisible(false);
+      setIsRepeatVisible(true);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
+  const mostrarContraseñaRepetida = () => {
+    if (isRepeatVisible) {
+      setIsVisible(true);
+      setIsRepeatVisible(false);
+    } else {
+      setIsRepeatVisible(true);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -95,7 +118,7 @@ const RegisterForm = ({
                     <TextInput.Icon
                       icon={isVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
-                      onPress={() => setIsVisible(!isVisible)}
+                      onPress={() => mostrarContraseña()}
                     />
                   }
                 />
@@ -132,7 +155,7 @@ const RegisterForm = ({
                     <TextInput.Icon
                       icon={isRepeatVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
-                      onPress={() => setIsRepeatVisible(!isRepeatVisible)}
+                      onPress={() => mostrarContraseñaRepetida()}
                     />
                   }
                 />
@@ -145,15 +168,19 @@ const RegisterForm = ({
             <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
           )}
         </View>
-        <Button
-          mode="contained"
-          onPress={handleSubmit(submit)}
-          style={styles.button}
-        >
-          Adherite
-        </Button>
+        {isLoading ? (
+          <ActivityIndicator size="large" color="#C83C45" />
+        ) : (
+          <Button
+            mode="contained"
+            onPress={handleSubmit(submit)}
+            style={styles.button}
+          >
+            Registrate
+          </Button>
+        )}
       </View>
-      <Button mode="Text" textColor="#C83C45" style={styles.buttonText}>
+      <Button mode="Text" textColor="#C83C45" style={styles.buttonText} onPress={handleNavigateLogin}>
         Ya soy miembro! Quiero iniciar sesión!
       </Button>
     </View>

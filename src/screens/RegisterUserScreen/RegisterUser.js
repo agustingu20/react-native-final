@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
@@ -8,6 +8,11 @@ import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
 const RegisterUser = ({ navigation }) => {
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleNavigateLogin = () => {
+    navigation.navigate('LogIn');
+  };
 
   const {
     control,
@@ -22,18 +27,10 @@ const RegisterUser = ({ navigation }) => {
     password2: '',
   };
 
-  const registerAlert = () => {
-    navigation.navigate('LogIn');
-    return (
-      window.alert('Usuario creado con éxito!')
-    );
-  };
-
   const submit = async (values) => {
     try {
-      if (values.password !== values.password2) {
-        setIsError(true);
-      } else {
+      if (values.password === values.password2) {
+        setIsLoading(true);
         setIsError(false);
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -52,10 +49,31 @@ const RegisterUser = ({ navigation }) => {
           },
         ];
         await addDoc(collection(db, 'users'), userRegisterInfo[0]);
-        registerAlert();
+        Alert.alert('Registro exitoso', 'Se registró con éxito el usuario', [
+          {
+            text: 'Aceptar',
+            onPress: () => {
+              setIsLoading(false);
+              navigation.navigate('LogIn');
+            },
+          },
+        ]);
+      } else {
+        setIsError(true);
       }
     } catch (error) {
-      console.error(error);
+      Alert.alert(
+        'Ups! Hubo un error',
+        'El usuario ya se encuentra registrado.',
+        [
+          {
+            text: 'Aceptar',
+            onPress: () => {
+              setIsLoading(false);
+            },
+          },
+        ],
+      );
     }
   };
 
@@ -68,6 +86,8 @@ const RegisterUser = ({ navigation }) => {
         defaultValues={defaultValues}
         submit={submit}
         isError={isError}
+        isLoading={isLoading}
+        handleNavigateLogin={handleNavigateLogin}
       />
     </ScrollView>
   );

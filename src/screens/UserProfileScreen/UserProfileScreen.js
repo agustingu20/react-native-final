@@ -19,7 +19,7 @@ const UserProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={`${user?.value?.[0].photoURL}`}
+        source={{ uri: `${user?.value?.[0].photoURL}` }}
         style={styles.profileImage}
       />
       {user.value && <Text style={styles.profileTitle}>Nombre</Text>}
