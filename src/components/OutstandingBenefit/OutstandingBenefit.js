@@ -31,6 +31,8 @@ const OutstandingBenefit = ({
   return (
     <TouchableHighlight
       onPress={onPressSelectedBenefit}
+      activeOpacity={0.6}
+      underlayColor="#fff"
       style={styles.containerCard}
     >
       <View>
