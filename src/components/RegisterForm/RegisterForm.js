@@ -17,6 +17,25 @@ const RegisterForm = ({
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isRepeatVisible, setIsRepeatVisible] = useState(true);
+
+  const mostrarContraseña = () => {
+    if (isVisible) {
+      setIsVisible(false);
+      setIsRepeatVisible(true);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
+  const mostrarContraseñaRepetida = () => {
+    if (isRepeatVisible) {
+      setIsVisible(true);
+      setIsRepeatVisible(false);
+    } else {
+      setIsRepeatVisible(true);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -98,7 +117,7 @@ const RegisterForm = ({
                     <TextInput.Icon
                       icon={isVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
-                      onPress={() => setIsVisible(!isVisible)}
+                      onPress={() => mostrarContraseña()}
                     />
                   }
                 />
@@ -135,7 +154,7 @@ const RegisterForm = ({
                     <TextInput.Icon
                       icon={isRepeatVisible ? 'eye-off' : 'eye'}
                       iconColor="#C83C45"
-                      onPress={() => setIsRepeatVisible(!isRepeatVisible)}
+                      onPress={() => mostrarContraseñaRepetida()}
                     />
                   }
                 />
