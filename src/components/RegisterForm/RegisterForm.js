@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
-import { Image, Text, View } from 'react-native';
+import {
+  ActivityIndicator, Image, Text, View,
+} from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { styles } from './registerFormStyles';
 
@@ -11,6 +13,7 @@ const RegisterForm = ({
   isError,
   handleSubmit,
   submit,
+  isLoading,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isRepeatVisible, setIsRepeatVisible] = useState(true);
@@ -145,13 +148,17 @@ const RegisterForm = ({
             <Text style={styles.errorMsg}>Las contraseñas no coinciden</Text>
           )}
         </View>
-        <Button
-          mode="contained"
-          onPress={handleSubmit(submit)}
-          style={styles.button}
-        >
-          Adherite
-        </Button>
+        {isLoading ? (
+          <ActivityIndicator size="large" color="#C83C45" />
+        ) : (
+          <Button
+            mode="contained"
+            onPress={handleSubmit(submit)}
+            style={styles.button}
+          >
+            Registrate
+          </Button>
+        )}
       </View>
       <Button mode="Text" textColor="#C83C45" style={styles.buttonText}>
         Ya soy miembro! Quiero iniciar sesión!
