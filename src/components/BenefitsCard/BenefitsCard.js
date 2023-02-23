@@ -21,7 +21,7 @@ const BenefitsCard = ({ benefit, navigation }) => {
 
   return (
     <Card style={styles.containerCard}>
-      <Card.Cover source={benefit.url} style={styles.cardImage} />
+      <Card.Cover source={ { uri: `${benefit.url}` } } style={styles.cardImage} />
       <Card.Content>
         <Title style={styles.titleCard}>{benefit.title}</Title>
         <Paragraph style={styles.textCard}>Válido: {benefit.days}</Paragraph>
